@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import {
   ArrowLeft, Phone, MessageSquare, Navigation2, User, FileText, CheckCircle2,
   AlertOctagon, ChevronRight, Loader2, Users, Luggage, CreditCard,
-  UserX, X, Car, MapPin, RefreshCw, Camera, Trash2, ArrowLeftRight, Banknote, Clock,
+  UserX, X, Car, MapPin, RefreshCw, Camera, Trash2, ArrowLeftRight, Banknote, Clock, Zap, Check,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useToast } from '@/components/toast'
@@ -971,7 +971,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       <div className="flex items-center gap-2">
                         <div className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-green-600 bg-green-100 border border-green-200">
                           <CheckCircle2 size={15} />
-                          {reminderLabel(r.type)} Sent ✓
+                          {reminderLabel(r.type)} sent
                         </div>
                         {booking.customer_phone && (
                           <button
@@ -1099,7 +1099,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                           color: done ? '#020813' : current ? '#d5a538' : 'rgba(0,0,0,0.25)',
                         }}
                       >
-                        {done ? '✓' : i + 1}
+                        {done ? <Check size={12} strokeWidth={3} /> : i + 1}
                       </div>
                       <span className="text-[9px] text-[#4f6580] text-center leading-tight" style={{ maxWidth: 52 }}>
                         {STEP_LABELS[step]}
@@ -1218,7 +1218,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       title="Find EV charger near dropoff"
                     >
                       <Car size={10} />
-                      <span>⚡</span>
+                      <Zap size={10} />
                     </button>
                   )}
                   <button
@@ -1299,7 +1299,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       disabled={savingNote}
                       className="mt-2 w-full py-2 rounded-lg text-xs font-semibold text-[#7a5c14] border border-[#d5a538]/30 bg-[#d5a538]/8 disabled:opacity-50"
                     >
-                      {noteSaved ? '✓ Saved' : savingNote ? 'Saving…' : 'Save note'}
+                      {noteSaved ? 'Saved' : savingNote ? 'Saving…' : 'Save note'}
                     </button>
                   )}
                 </div>

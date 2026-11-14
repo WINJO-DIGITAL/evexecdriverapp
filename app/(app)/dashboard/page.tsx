@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { Car, ChevronRight, Bell, Briefcase, Star, RefreshCw, CheckCircle2, Loader2 } from 'lucide-react'
+import { Car, ChevronRight, Bell, Briefcase, Star, RefreshCw, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { BookingStatusBadge } from '@/components/badges'
 import { RouteDisplay } from '@/components/route-icons'
@@ -155,7 +155,7 @@ export default function DashboardPage() {
       {attestationBookings.length > 0 && (
         <div className="mb-5 space-y-2.5">
           <p className="text-[10px] font-semibold uppercase tracking-widest text-amber-800">
-            ⚠ Confirmation Required
+            <AlertTriangle size={11} className="mr-1 inline-block align-[-1px]" />Confirmation required
           </p>
           {attestationBookings.map(b => (
             <div
