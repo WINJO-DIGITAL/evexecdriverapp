@@ -377,7 +377,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
   // Pre-filled customer update SMS (opened from the driver's own phone on swipe)
   const [smsDriver, setSmsDriver] = useState<SmsDriver | null>(null)
-  const [pendingSms, setPendingSms] = useState<{ href: string; label: string } | null>(null)
+  const [pendingSms, setPendingSms] = useState<{ href: string; label: string; sentLabel: string; sent: boolean } | null>(null)
 
   // Customer reminders, week ahead and day before (driver_sms_reminders,
   // one row per type per leg)
@@ -556,7 +556,13 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
     const body = customerUpdateSms(status, b, smsDriver, business)
     if (!body) return
     const href = smsHref(b.customer_phone, body)
-    setPendingSms({ href, label: status === 'En Route' ? 'Text customer: on my way' : 'Text customer: arrived' })
+    const onMyWay = status === 'En Route'
+    setPendingSms({
+      href,
+      label: onMyWay ? 'Text customer: on my way' : 'Text customer: arrived',
+      sentLabel: onMyWay ? 'On-my-way text sent' : 'Arrived text sent',
+      sent: false,
+    })
     window.location.href = href
   }
 
@@ -997,24 +1003,34 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 )
               })}
 
-              {/* Pre-filled customer text — fallback if Messages didn't open */}
+              {/* Customer text for the status just set. Tapping it opens Messages (the driver
+                  presses Send there) and marks it sent, like the reminder rows. It clears
+                  itself when the next status is set. */}
               {pendingSms && !pobUndoActive && (
-                <div className="flex items-center gap-2">
+                pendingSms.sent ? (
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-green-600 bg-green-100 border border-green-200">
+                      <CheckCircle2 size={15} />
+                      {pendingSms.sentLabel}
+                    </div>
+                    <a
+                      href={pendingSms.href}
+                      aria-label="Open the text again"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                    >
+                      <RefreshCw size={16} className="text-[#4f6580]" />
+                    </a>
+                  </div>
+                ) : (
                   <a
                     href={pendingSms.href}
+                    onClick={() => setPendingSms(p => (p ? { ...p, sent: true } : p))}
                     className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-[#060C1A] bg-white border border-[#d5a538]/40 active:opacity-70"
                   >
                     <MessageSquare size={15} className="text-[#7a5c14]" />
                     {pendingSms.label}
                   </a>
-                  <button
-                    onClick={() => setPendingSms(null)}
-                    aria-label="Dismiss"
-                    className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
-                  >
-                    <X size={16} className="text-[#4f6580]" />
-                  </button>
-                </div>
+                )
               )}
 
               {/* Swipe action */}
