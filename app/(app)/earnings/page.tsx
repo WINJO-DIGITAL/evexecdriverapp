@@ -172,7 +172,7 @@ function EarningsContent() {
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all ${
               view === v ? 'text-[#020813]' : 'text-[#7a9ab8] hover:text-[#4a6a8a]'
             }`}
-            style={view === v ? { background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' } : {}}
+            style={view === v ? { background: '#d5a538' } : {}}
           >
             {v === 'overview' ? 'Overview' : 'Monthly Report'}
           </button>
@@ -208,7 +208,7 @@ function EarningsContent() {
               border: '1px solid rgba(213,165,56,0.25)',
             }}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#d5a538]/70 mb-2">
+            <p className="text-xs font-semibold text-[#d5a538]/70 mb-2">
               {PERIOD_LABELS[period]} Earnings
             </p>
             <div className="flex items-end gap-1">
@@ -224,25 +224,25 @@ function EarningsContent() {
             <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
               <Briefcase size={16} className="mx-auto mb-1 text-[#d5a538]" />
               <p className="text-[#060C1A] font-bold text-lg">{periodTrips}</p>
-              <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Jobs</p>
+              <p className="text-[#7a9ab8] text-xs">Jobs</p>
             </div>
             <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
               <TrendingUp size={16} className="mx-auto mb-1 text-[#d5a538]" />
               <p className="text-[#060C1A] font-bold text-lg">£{perJob.toFixed(0)}</p>
-              <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Per Job avg</p>
+              <p className="text-[#7a9ab8] text-xs">Per Job avg</p>
             </div>
           </div>
 
           {/* Performance */}
           {(completionRate !== null || onTimeRate !== null) && (
             <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-5">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-3">Performance</p>
+              <p className="text-xs font-semibold text-[#7a9ab8] mb-3">Performance</p>
               <div className="grid grid-cols-2 gap-4">
                 {completionRate !== null && (
                   <div>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <CheckCircle2 size={13} className="text-[#10b981]" />
-                      <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Completion</p>
+                      <p className="text-[#7a9ab8] text-xs">Completion</p>
                     </div>
                     <p className={`text-2xl font-bold ${completionRate >= 90 ? 'text-[#10b981]' : completionRate >= 75 ? 'text-amber-400' : 'text-red-400'}`}>
                       {completionRate}%
@@ -263,7 +263,7 @@ function EarningsContent() {
                   <div>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <Clock size={13} className="text-[#d5a538]" />
-                      <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">On Time</p>
+                      <p className="text-[#7a9ab8] text-xs">On Time</p>
                     </div>
                     <p className={`text-2xl font-bold ${onTimeRate >= 90 ? 'text-[#10b981]' : onTimeRate >= 75 ? 'text-amber-400' : 'text-red-400'}`}>
                       {onTimeRate}%
@@ -349,17 +349,17 @@ function EarningsContent() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 mb-4">
             <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-              <p className="text-[#7a9ab8] text-[9px] uppercase tracking-wide">This Month</p>
+              <p className="text-[#7a9ab8] text-[11px]">This Month</p>
               <p className="text-[#060C1A] font-bold text-xl mt-0.5">{monthBookings.length}</p>
               <p className="text-[#a8c0d4] text-[9px] mt-0.5">trips</p>
             </div>
             <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-              <p className="text-[#7a9ab8] text-[9px] uppercase tracking-wide">Earned</p>
+              <p className="text-[#7a9ab8] text-[11px]">Earned</p>
               <p className="text-[#d5a538] font-bold text-xl mt-0.5">£{monthEarnings.toFixed(0)}</p>
               <p className="text-[#a8c0d4] text-[9px] mt-0.5">this month</p>
             </div>
             <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-              <p className="text-[#7a9ab8] text-[9px] uppercase tracking-wide">All Time</p>
+              <p className="text-[#7a9ab8] text-[11px]">All Time</p>
               <p className="text-[#d5a538] font-bold text-xl mt-0.5">£{allEarnings.toFixed(0)}</p>
               <p className="text-[#a8c0d4] text-[9px] mt-0.5">{bookings.length} trips</p>
             </div>
@@ -383,7 +383,7 @@ function EarningsContent() {
             const maxEarn = Math.max(...weeks.map(w => w.earn), 1)
             return (
               <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-3">Weekly Breakdown</p>
+                <p className="text-xs font-semibold text-[#7a9ab8] mb-3">Weekly Breakdown</p>
                 <div className="space-y-2">
                   {weeks.map(w => (
                     <div key={w.label} className="flex items-center gap-3">
@@ -391,7 +391,7 @@ function EarningsContent() {
                       <div className="flex-1 h-1.5 rounded-full bg-[#dce8f2] overflow-hidden">
                         <div
                           className="h-full rounded-full"
-                          style={{ width: `${(w.earn / maxEarn) * 100}%`, background: 'linear-gradient(90deg, #f1c56a, #d5a538)' }}
+                          style={{ width: `${(w.earn / maxEarn) * 100}%`, background: '#d5a538' }}
                         />
                       </div>
                       <span className="text-[#d5a538] text-xs font-semibold w-12 text-right flex-shrink-0">

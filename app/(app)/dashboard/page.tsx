@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { Car, ChevronRight, Bell, Briefcase, Star, RefreshCw, CheckCircle2, Loader2 } from 'lucide-react'
+import { ChevronRight, Bell, RefreshCw, CheckCircle2, Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { BookingStatusBadge } from '@/components/badges'
 import { RouteDisplay } from '@/components/route-icons'
@@ -107,7 +107,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-[#7a9ab8] text-xs uppercase tracking-widest">{greeting()}</p>
+          <p className="text-[#7a9ab8] text-xs">{greeting()}</p>
           <h1 className="text-[#060C1A] font-semibold text-lg mt-0.5">{driver?.full_name ?? 'Driver'}</h1>
         </div>
         <div className="flex items-center gap-3">
@@ -128,8 +128,8 @@ export default function DashboardPage() {
             )}
           </Link>
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-sm text-[#020813]"
-            style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' }}
+            className="w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm text-[#020813]"
+            style={{ background: '#d5a538' }}
           >
             {initials}
           </div>
@@ -139,8 +139,8 @@ export default function DashboardPage() {
       {/* Attestation — jobs needing driver confirmation */}
       {attestationBookings.length > 0 && (
         <div className="mb-5 space-y-2.5">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-amber-400">
-            ⚠ Confirmation Required
+          <p className="text-xs font-semibold text-amber-400">
+            Needs your confirmation
           </p>
           {attestationBookings.map(b => (
             <div
@@ -162,7 +162,7 @@ export default function DashboardPage() {
                   onClick={() => confirmJob(b.id)}
                   disabled={confirmingJobId === b.id}
                   className="flex-shrink-0 px-4 py-2 rounded-xl text-sm font-bold text-[#020813] disabled:opacity-50 flex items-center gap-1.5"
-                  style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538)' }}
+                  style={{ background: '#d5a538' }}
                 >
                   {confirmingJobId === b.id
                     ? <Loader2 size={14} className="animate-spin" />
@@ -190,8 +190,8 @@ export default function DashboardPage() {
             style={{ background: 'linear-gradient(135deg, rgba(213,165,56,0.12), rgba(213,165,56,0.04))' }}
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-[#d5a538]">
-                ● Active Job
+              <span className="text-xs font-semibold text-[#d5a538]">
+                Active job
               </span>
               <ChevronRight size={16} className="text-[#d5a538]" />
             </div>
@@ -205,20 +205,17 @@ export default function DashboardPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3 mb-5">
-        <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
-          <Briefcase size={16} className="mx-auto mb-1 text-[#d5a538]" />
-          <p className="text-[#060C1A] font-bold text-lg">{upcomingBookings.length + (activeBooking ? 1 : 0)}</p>
-          <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide mt-0.5">Today</p>
+        <div className="bg-white border border-[#c4d4e4] rounded-xl px-3 py-2.5">
+          <p className="text-[#060C1A] font-semibold text-xl leading-none tabular-nums">{upcomingBookings.length + (activeBooking ? 1 : 0)}</p>
+          <p className="text-[#7a9ab8] text-xs mt-1">Today</p>
         </div>
-        <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
-          <Car size={16} className="mx-auto mb-1 text-[#d5a538]" />
-          <p className="text-[#060C1A] font-bold text-lg">{completedToday.length}</p>
-          <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide mt-0.5">Done</p>
+        <div className="bg-white border border-[#c4d4e4] rounded-xl px-3 py-2.5">
+          <p className="text-[#060C1A] font-semibold text-xl leading-none tabular-nums">{completedToday.length}</p>
+          <p className="text-[#7a9ab8] text-xs mt-1">Done</p>
         </div>
-        <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
-          <Star size={16} className="mx-auto mb-1 text-[#d5a538]" />
-          <p className="text-[#060C1A] font-bold text-lg">{bookings.length}</p>
-          <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide mt-0.5">Total</p>
+        <div className="bg-white border border-[#c4d4e4] rounded-xl px-3 py-2.5">
+          <p className="text-[#060C1A] font-semibold text-xl leading-none tabular-nums">{bookings.length}</p>
+          <p className="text-[#7a9ab8] text-xs mt-1">Total</p>
         </div>
       </div>
 
@@ -231,10 +228,7 @@ export default function DashboardPage() {
       </div>
 
       {upcomingBookings.length === 0 && !activeBooking ? (
-        <div className="bg-white border border-[#c4d4e4] rounded-2xl p-6 text-center">
-          <Car size={28} className="mx-auto mb-2 text-[#a8c0d4]" />
-          <p className="text-[#7a9ab8] text-sm">No upcoming jobs today</p>
-        </div>
+        <p className="text-[#7a9ab8] text-sm py-2">No upcoming jobs today.</p>
       ) : (
         <div className="space-y-3">
           {upcomingBookings.slice(0, 3).map((booking) => (
@@ -249,7 +243,7 @@ export default function DashboardPage() {
                 </div>
                 <p className="text-[#060C1A] font-medium text-sm mb-3">{booking.customer_name}</p>
                 <RouteDisplay booking={booking} />
-                {booking.quoted_price && (
+                {!!booking.quoted_price && (
                   <div className="flex items-center mt-3 pt-3 border-t border-[#d8e6f0]">
                     <span className="ml-auto text-[#d5a538] font-semibold text-sm">
                       £{booking.quoted_price.toFixed(0)}

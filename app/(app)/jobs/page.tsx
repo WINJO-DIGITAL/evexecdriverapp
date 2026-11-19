@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { ChevronRight, Car, Users, Search, X } from 'lucide-react'
+import { ChevronRight, Users, Search, X } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { BookingStatusBadge } from '@/components/badges'
 import { RouteDisplay } from '@/components/route-icons'
@@ -64,7 +64,7 @@ function BookingCard({ booking }: { booking: Booking }) {
                 </span>
               )
             })()}
-            {booking.quoted_price && (
+            {!!booking.quoted_price && (
               <span className="ml-auto text-[#d5a538] font-semibold text-sm">
                 £{booking.quoted_price.toFixed(0)}
               </span>
@@ -217,8 +217,8 @@ export default function JobsPage() {
             onClick={() => setDateFilter(key)}
             className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all"
             style={dateFilter === key
-              ? { background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)', color: '#020813', borderColor: 'transparent' }
-              : { background: 'transparent', color: 'rgba(255,255,255,0.4)', borderColor: 'rgba(255,255,255,0.1)' }
+              ? { background: '#d5a538', color: '#020813', borderColor: 'transparent' }
+              : { background: 'transparent', color: '#4a6a8a', borderColor: '#c4d4e4' }
             }
           >
             {label}
@@ -238,7 +238,7 @@ export default function JobsPage() {
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all ${
               tab === key ? 'text-[#020813]' : 'text-[#7a9ab8] hover:text-[#4a6a8a]'
             }`}
-            style={tab === key ? { background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' } : {}}
+            style={tab === key ? { background: '#d5a538' } : {}}
           >
             {label}
           </button>
@@ -250,10 +250,7 @@ export default function JobsPage() {
           <div className="w-7 h-7 rounded-full border-2 border-[#d5a538] border-t-transparent animate-spin" />
         </div>
       ) : currentList.length === 0 ? (
-        <div className="bg-white border border-[#c4d4e4] rounded-2xl p-10 text-center">
-          <Car size={28} className="mx-auto mb-2 text-[#a8c0d4]" />
-          <p className="text-[#7a9ab8] text-sm">No {tab} jobs</p>
-        </div>
+        <p className="text-[#7a9ab8] text-sm text-center py-12">No {tab === 'completed' ? 'finished' : tab} jobs.</p>
       ) : (
         <div className="space-y-3">
           {currentList.map((booking) => (

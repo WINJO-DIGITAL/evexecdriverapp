@@ -40,7 +40,7 @@ export default function LoginPage() {
           height={160}
           className="mx-auto"
         />
-        <p className="text-white/50 mt-2 tracking-widest uppercase text-xs">Driver Portal</p>
+        <p className="text-white/50 mt-2 text-xs">Driver Portal</p>
       </div>
 
       {/* Card */}
@@ -49,7 +49,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-[10px] font-semibold text-[#7a9ab8] mb-2 uppercase tracking-widest">
+            <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
               Email
             </label>
             <input
@@ -62,7 +62,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-[10px] font-semibold text-[#7a9ab8] mb-2 uppercase tracking-widest">
+            <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
               Password
             </label>
             <div className="relative">
@@ -99,7 +99,7 @@ export default function LoginPage() {
             type="submit"
             disabled={isPending}
             className="w-full py-3.5 rounded-xl font-semibold text-[#020813] text-sm flex items-center justify-center gap-2 disabled:opacity-60 transition-opacity mt-2"
-            style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' }}
+            style={{ background: '#d5a538' }}
           >
             {isPending ? <Loader2 size={16} className="animate-spin" /> : null}
             {isPending ? 'Signing in…' : 'Sign In'}

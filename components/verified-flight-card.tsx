@@ -88,7 +88,7 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
     return (
       <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
         <div className="flex items-center justify-between mb-1">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] flex items-center gap-1.5">
+          <p className="text-xs font-semibold text-[#7a9ab8] flex items-center gap-1.5">
             <Plane size={11} /> Flight (verified)
           </p>
           <button
@@ -111,7 +111,7 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
   return (
     <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
       <div className="flex items-center justify-between mb-3">
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] flex items-center gap-1.5">
+        <p className="text-xs font-semibold text-[#7a9ab8] flex items-center gap-1.5">
           <Plane size={11} /> Flight (verified)
         </p>
         <button
@@ -132,14 +132,14 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
       </div>
       <div className="grid grid-cols-2 gap-3 mb-3">
         <div>
-          <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wider mb-0.5">
+          <p className="text-[#7a9ab8] text-xs mb-0.5">
             {verification.direction === 'arrival' ? 'Arrival' : 'Departure'}
           </p>
           <p className="text-[#060C1A] text-sm font-medium">{formatFlightDateTime(relevantTime)}</p>
         </div>
         {verification.recommended_pickup && (
           <div>
-            <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wider mb-0.5">Estimated arrival</p>
+            <p className="text-[#7a9ab8] text-xs mb-0.5">Estimated arrival</p>
             <p className="text-[#060C1A] text-sm font-medium">{formatFlightDateTime(verification.recommended_pickup)}</p>
           </div>
         )}

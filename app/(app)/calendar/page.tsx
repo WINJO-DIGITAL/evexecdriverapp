@@ -160,15 +160,15 @@ export default function CalendarPage() {
       {!loading && (
         <div className="grid grid-cols-3 gap-3 mb-4">
           <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-            <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Jobs</p>
+            <p className="text-[#7a9ab8] text-xs">Jobs</p>
             <p className="text-[#060C1A] font-bold text-xl mt-0.5">{totalMonthJobs}</p>
           </div>
           <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-            <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Earnings</p>
+            <p className="text-[#7a9ab8] text-xs">Earnings</p>
             <p className="text-[#d5a538] font-bold text-xl mt-0.5">£{totalMonthEarnings.toFixed(0)}</p>
           </div>
           <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-            <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Shift hrs</p>
+            <p className="text-[#7a9ab8] text-xs">Shift hrs</p>
             <p className="text-[#060C1A] font-bold text-xl mt-0.5">
               {totalMonthShiftHours > 0 ? totalMonthShiftHours.toFixed(0) : '—'}
             </p>
@@ -179,7 +179,7 @@ export default function CalendarPage() {
       {/* Day headers */}
       <div className="grid grid-cols-7 mb-1">
         {DAYS.map(d => (
-          <div key={d} className="text-center text-[9px] font-semibold text-[#7a9ab8] py-1 uppercase tracking-wide">
+          <div key={d} className="text-center text-[11px] font-semibold text-[#7a9ab8] py-1">
             {d}
           </div>
         ))}
@@ -205,7 +205,7 @@ export default function CalendarPage() {
               className="aspect-square rounded-xl flex flex-col items-center justify-center transition-all active:scale-95"
               style={{
                 background: isSelected
-                  ? 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)'
+                  ? '#d5a538'
                   : isUnavailable
                   ? 'rgba(239,68,68,0.12)'
                   : isToday

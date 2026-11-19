@@ -30,7 +30,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             <div className="pointer-events-auto flex items-center gap-3 bg-white border border-[#d5a538]/50 rounded-2xl px-4 py-3 shadow-2xl toast-enter">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538)' }}
+                style={{ background: '#d5a538' }}
               >
                 <Bell size={15} className="text-[#020813]" />
               </div>

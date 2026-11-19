@@ -12,7 +12,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <ToastProvider>
-      <div className="min-h-screen bg-[#eaeff7] pb-28">
+      <div className="min-h-screen bg-[#eaeff7] pb-24">
         <PushPrompt />
         {children}
         <BottomNav />

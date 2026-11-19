@@ -92,7 +92,7 @@ export default function MyJobsPage() {
                   }}
                 >
                   <BookingStatusBadge status={booking.status} />
-                  {booking.quoted_price && (
+                  {!!booking.quoted_price && (
                     <span className="text-[#d5a538] font-bold text-sm">
                       £{booking.quoted_price.toFixed(2)}
                     </span>
@@ -146,7 +146,7 @@ export default function MyJobsPage() {
                   <Link href={`/jobs/${booking.id}`}>
                     <button
                       className="w-full py-2.5 rounded-xl font-semibold text-[#020813] text-sm flex items-center justify-center gap-1.5 active:opacity-80"
-                      style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' }}
+                      style={{ background: '#d5a538' }}
                     >
                       Update Status <ChevronRight size={14} />
                     </button>

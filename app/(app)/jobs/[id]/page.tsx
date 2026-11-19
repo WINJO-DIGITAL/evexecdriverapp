@@ -136,7 +136,7 @@ function SwipeToConfirm({
   const rgb = variant === 'green' ? '16,185,129' : '213,165,56'
   const thumbBg = variant === 'green'
     ? 'linear-gradient(135deg, #34d399, #10b981 55%, #059669)'
-    : 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)'
+    : '#d5a538'
 
   return (
     <div
@@ -208,14 +208,14 @@ function WaitTimer({ since, graceMinutes }: { since: string | null; graceMinutes
   return (
     <div className="flex items-center gap-3">
       <div>
-        <p className="text-[9px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-0.5">Waiting</p>
+        <p className="text-[11px] font-semibold text-[#7a9ab8] mb-0.5">Waiting</p>
         <span className="text-[#d5a538] font-mono font-bold text-sm">
           {String(elapsedMin).padStart(2, '0')}:{String(elapsedSec).padStart(2, '0')}
         </span>
       </div>
       <div className="w-px h-7 bg-[#cad8e8]" />
       <div>
-        <p className="text-[9px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-0.5">
+        <p className="text-[11px] font-semibold text-[#7a9ab8] mb-0.5">
           {overtime ? 'Overtime' : 'Free wait'}
         </p>
         <span
@@ -341,7 +341,7 @@ function PaymentModal({
 
         {method === 'Cash' && (
           <div className="mb-5">
-            <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide mb-2">Cash Received</p>
+            <p className="text-[#7a9ab8] text-xs mb-2">Cash Received</p>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#d5a538] font-bold text-sm">£</span>
               <input
@@ -917,19 +917,19 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <div className="flex-1 min-w-0">
                     {isEnRoute && (
                       <>
-                        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-0.5">En Route to Pickup</p>
+                        <p className="text-xs font-semibold text-[#7a9ab8] mb-0.5">En Route to Pickup</p>
                         <p className="text-[#060C1A] text-sm font-medium leading-snug truncate">{pickupAddress}</p>
                       </>
                     )}
                     {isArrived && (
                       <>
-                        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-1">Arrived — Waiting</p>
+                        <p className="text-xs font-semibold text-[#7a9ab8] mb-1">Arrived — Waiting</p>
                         <WaitTimer since={booking.arrived_at} graceMinutes={graceMinutes} />
                       </>
                     )}
                     {isPob && (
                       <>
-                        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-0.5">Passenger On Board</p>
+                        <p className="text-xs font-semibold text-[#7a9ab8] mb-0.5">Passenger On Board</p>
                         <p className="text-[#060C1A] text-sm font-medium leading-snug truncate">{dropoffAddress}</p>
                       </>
                     )}
@@ -1152,7 +1152,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
           {/* ── Passenger ────────────────────────────────────────────────── */}
           <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-3">Passenger</p>
+            <p className="text-xs font-semibold text-[#7a9ab8] mb-3">Passenger</p>
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#dce8f2] flex items-center justify-center flex-shrink-0">
@@ -1190,7 +1190,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           {/* ── Passenger preferences ────────────────────────────────────── */}
           {prefs.length > 0 && (
             <div className="bg-white border border-[#c4d4e4] rounded-2xl px-4 py-3.5">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-2.5">Passenger Preferences</p>
+              <p className="text-xs font-semibold text-[#7a9ab8] mb-2.5">Passenger Preferences</p>
               <div className="flex flex-wrap gap-2">
                 {prefs.map((pref) => (
                   <span
@@ -1207,7 +1207,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
           {/* ── Route ────────────────────────────────────────────────────── */}
           <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-4">Route</p>
+            <p className="text-xs font-semibold text-[#7a9ab8] mb-4">Route</p>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="flex flex-col items-center gap-1 flex-shrink-0 mt-0.5">
@@ -1215,7 +1215,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <div className="w-px h-5 bg-[#d5a538]/20" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wider mb-0.5">
+                  <p className="text-[#7a9ab8] text-xs mb-0.5">
                     Pickup
                     {booking.travel_time ? ` · ${formatTime(booking.travel_time)}` : ''}
                     {booking.travel_date ? ` · ${formatDate(booking.travel_date)}` : ''}
@@ -1234,7 +1234,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <DropoffIcon size={10} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wider mb-0.5">Drop-off</p>
+                  <p className="text-[#7a9ab8] text-xs mb-0.5">Drop-off</p>
                   <p className="text-[#060C1A] text-sm font-medium leading-snug">{dropoffAddress}</p>
                 </div>
                 <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -1306,18 +1306,18 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           {/* ── Notes ────────────────────────────────────────────────────── */}
           {showNotes && (
             <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] mb-3 flex items-center gap-1.5">
+              <p className="text-xs font-semibold text-[#7a9ab8] mb-3 flex items-center gap-1.5">
                 <FileText size={11} /> Notes
               </p>
               {booking.operator_note && (
                 <div className={!isDone ? 'mb-4' : ''}>
-                  <p className="text-[10px] text-[#7a9ab8] mb-1 uppercase tracking-wide">From operator</p>
+                  <p className="text-xs text-[#7a9ab8] mb-1">From operator</p>
                   <p className="text-[#2d4c6d] text-sm leading-relaxed">{booking.operator_note}</p>
                 </div>
               )}
               {!isDone && (
                 <div>
-                  <p className="text-[10px] text-[#7a9ab8] mb-1.5 uppercase tracking-wide">Your notes</p>
+                  <p className="text-xs text-[#7a9ab8] mb-1.5">Your notes</p>
                   <textarea
                     value={driverNote}
                     onChange={(e) => setDriverNote(e.target.value)}
@@ -1338,7 +1338,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               )}
               {isDone && booking.driver_notes && (
                 <div>
-                  <p className="text-[10px] text-[#7a9ab8] mb-1 uppercase tracking-wide">Your notes</p>
+                  <p className="text-xs text-[#7a9ab8] mb-1">Your notes</p>
                   <p className="text-[#4a6a8a] text-sm leading-relaxed">{booking.driver_notes}</p>
                 </div>
               )}
@@ -1348,7 +1348,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           {/* ── Photos / damage report ───────────────────────────────────── */}
           <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9ab8] flex items-center gap-1.5">
+              <p className="text-xs font-semibold text-[#7a9ab8] flex items-center gap-1.5">
                 <Camera size={11} /> Photos
               </p>
               {!isDone && (

@@ -62,7 +62,7 @@ export default function ProfilePage() {
         <div className="flex items-center gap-4">
           <div
             className="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold text-[#020813] flex-shrink-0"
-            style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' }}
+            style={{ background: '#d5a538' }}
           >
             {initials}
           </div>
@@ -110,18 +110,18 @@ export default function ProfilePage() {
         <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
           <div className="flex items-center gap-2 mb-3">
             <Car size={14} className="text-[#d5a538]" />
-            <p className="text-[#4a6a8a] text-xs font-semibold uppercase tracking-widest">Vehicle</p>
+            <p className="text-[#4a6a8a] text-xs font-semibold">Vehicle</p>
           </div>
           <div className="grid grid-cols-2 gap-y-3">
             {driver.vehicle_model && (
               <div>
-                <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Model</p>
+                <p className="text-[#7a9ab8] text-xs">Model</p>
                 <p className="text-[#060C1A] text-sm font-medium mt-0.5">{driver.vehicle_model}</p>
               </div>
             )}
             {driver.vehicle_registration && (
               <div>
-                <p className="text-[#7a9ab8] text-[10px] uppercase tracking-wide">Registration</p>
+                <p className="text-[#7a9ab8] text-xs">Registration</p>
                 <p className="text-[#060C1A] text-sm font-medium mt-0.5 font-mono">{driver.vehicle_registration}</p>
               </div>
             )}

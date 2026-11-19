@@ -58,8 +58,8 @@ export function BottomNav() {
   if (/^\/jobs\/[^/]+/.test(pathname)) return null
 
   return (
-    <nav className="fixed bottom-4 left-3 right-3 bg-[#0B1525] border border-white/10 rounded-[28px] shadow-2xl shadow-black/40 z-50">
-      <div className="flex h-[78px] items-center justify-around px-1">
+    <nav className="fixed bottom-0 left-0 right-0 bg-[#0B1525] border-t border-white/10 z-50 pb-[env(safe-area-inset-bottom)]">
+      <div className="flex h-16 items-center justify-around px-2">
         {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
           const active = pathname === href
             || (href !== '/dashboard' && pathname.startsWith(href))
@@ -70,17 +70,17 @@ export function BottomNav() {
             <Link
               key={href}
               href={resolvedHref}
-              className={`relative flex min-h-[62px] min-w-[56px] flex-col items-center justify-center gap-1.5 rounded-2xl px-2 transition-colors ${
+              className={`relative flex min-h-[56px] flex-1 flex-col items-center justify-center gap-1 px-2 transition-colors ${
                 active ? 'text-[#d5a538]' : 'text-white/35 hover:text-white/65'
               }`}
             >
-              <Icon size={22} strokeWidth={active ? 2.5 : 1.9} />
+              <Icon size={22} strokeWidth={active ? 2.25 : 1.75} />
               {isJobs && activeJobs > 0 && (
                 <span className="absolute top-2.5 right-2 w-4 h-4 rounded-full bg-[#10b981] text-[#020813] text-[9px] font-bold flex items-center justify-center">
                   {activeJobs > 9 ? '9+' : activeJobs}
                 </span>
               )}
-              <span className="text-[10px] font-medium tracking-wide">{label}</span>
+              <span className="text-[11px] font-medium">{label}</span>
             </Link>
           )
         })}

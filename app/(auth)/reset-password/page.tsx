@@ -83,7 +83,7 @@ export default function ResetPasswordPage() {
       <div className="mb-8 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.png" alt="EV Exec" width={160} height={160} className="mx-auto" />
-        <p className="text-[#7a9ab8] mt-2 tracking-widest uppercase text-xs">Driver Portal</p>
+        <p className="text-[#7a9ab8] mt-2 text-xs">Driver Portal</p>
       </div>
 
       <div className="w-full max-w-sm bg-white border border-[#c4d4e4] rounded-2xl p-6 shadow-2xl">
@@ -100,7 +100,7 @@ export default function ResetPasswordPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-[10px] font-semibold text-[#7a9ab8] mb-2 uppercase tracking-widest">
+                <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
                   New Password
                 </label>
                 <div className="relative">
@@ -125,7 +125,7 @@ export default function ResetPasswordPage() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-semibold text-[#7a9ab8] mb-2 uppercase tracking-widest">
+                <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
                   Confirm Password
                 </label>
                 <input
@@ -154,7 +154,7 @@ export default function ResetPasswordPage() {
                 type="submit"
                 disabled={isPending || !ready}
                 className="w-full py-3.5 rounded-xl font-semibold text-[#020813] text-sm flex items-center justify-center gap-2 disabled:opacity-60 transition-opacity mt-2"
-                style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' }}
+                style={{ background: '#d5a538' }}
               >
                 {isPending ? <Loader2 size={16} className="animate-spin" /> : null}
                 {isPending ? 'Saving…' : invite ? 'Set Password' : 'Update Password'}

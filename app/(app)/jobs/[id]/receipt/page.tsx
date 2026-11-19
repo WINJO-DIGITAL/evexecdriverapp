@@ -104,7 +104,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
           <button
             onClick={() => window.print()}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-[#020813]"
-            style={{ background: 'linear-gradient(135deg, #f1c56a, #d5a538 55%, #a97918)' }}
+            style={{ background: '#d5a538' }}
           >
             <Printer size={15} />
             Save / Print
@@ -141,7 +141,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
           <div className="text-center mb-6 pb-5 border-b border-[#c4d4e4] print-divider">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.png" alt="EV Exec" width={64} height={64} className="mx-auto mb-3" />
-            <p className="text-[#7a9ab8] text-[10px] uppercase tracking-widest print-gray">Journey Receipt</p>
+            <p className="text-[#7a9ab8] text-xs print-gray">Journey Receipt</p>
             <h1 className="text-[#d5a538] font-bold text-2xl mt-1 tracking-wide print-black" style={{ fontFamily: 'monospace' }}>
               {ref}
             </h1>
