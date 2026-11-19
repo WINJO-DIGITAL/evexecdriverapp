@@ -956,6 +956,63 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 </div>
               )}
 
+              {/* Swipe action */}
+              {nextStep && !pobUndoActive && (
+                <>
+                  {withinSwipeWindow ? (
+                    <SwipeToConfirm
+                      label={nextStep.label}
+                      onConfirm={() => {
+                        if (nextStep.to === 'Completed') {
+                          // Return legs are paid with the outbound; paid bookings need no question.
+                          if (isReturnLeg(booking.notes) || String(booking.payment_status ?? '').toLowerCase() === 'paid') handleComplete(null)
+                          else setShowPaymentModal(true)
+                        } else {
+                          handleStatusUpdate(nextStep.to)
+                        }
+                      }}
+                      loading={updating}
+                      variant={nextStep.to === 'Completed' ? 'green' : 'gold'}
+                    />
+                  ) : (
+                    <div className="w-full h-16 rounded-2xl bg-[#f0f5fa] border border-[#c4d4e4] flex items-center justify-center gap-2">
+                      <Clock size={14} className="text-[#4f6580]" />
+                      <span className="text-[#4f6580] text-sm font-semibold">Available 24 h before pickup</span>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* Customer text for the status just set. Tapping it opens Messages (the driver
+                  presses Send there) and marks it sent, like the reminder rows. It clears
+                  itself when the next status is set. */}
+              {pendingSms && !pobUndoActive && (
+                pendingSms.sent ? (
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-green-600 bg-green-100 border border-green-200">
+                      <CheckCircle2 size={15} />
+                      {pendingSms.sentLabel}
+                    </div>
+                    <a
+                      href={pendingSms.href}
+                      aria-label="Open the text again"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                    >
+                      <RefreshCw size={16} className="text-[#4f6580]" />
+                    </a>
+                  </div>
+                ) : (
+                  <a
+                    href={pendingSms.href}
+                    onClick={() => setPendingSms(p => (p ? { ...p, sent: true } : p))}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-[#060C1A] bg-white border border-[#d5a538]/40 active:opacity-70"
+                  >
+                    <MessageSquare size={15} className="text-[#7a5c14]" />
+                    {pendingSms.label}
+                  </a>
+                )
+              )}
+
               {/* Customer reminders — same two-tap text as the progress updates */}
               {reminderViews.map(r => {
                 return (
@@ -1002,63 +1059,6 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   </div>
                 )
               })}
-
-              {/* Customer text for the status just set. Tapping it opens Messages (the driver
-                  presses Send there) and marks it sent, like the reminder rows. It clears
-                  itself when the next status is set. */}
-              {pendingSms && !pobUndoActive && (
-                pendingSms.sent ? (
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-green-600 bg-green-100 border border-green-200">
-                      <CheckCircle2 size={15} />
-                      {pendingSms.sentLabel}
-                    </div>
-                    <a
-                      href={pendingSms.href}
-                      aria-label="Open the text again"
-                      className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
-                    >
-                      <RefreshCw size={16} className="text-[#4f6580]" />
-                    </a>
-                  </div>
-                ) : (
-                  <a
-                    href={pendingSms.href}
-                    onClick={() => setPendingSms(p => (p ? { ...p, sent: true } : p))}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-[#060C1A] bg-white border border-[#d5a538]/40 active:opacity-70"
-                  >
-                    <MessageSquare size={15} className="text-[#7a5c14]" />
-                    {pendingSms.label}
-                  </a>
-                )
-              )}
-
-              {/* Swipe action */}
-              {nextStep && !pobUndoActive && (
-                <>
-                  {withinSwipeWindow ? (
-                    <SwipeToConfirm
-                      label={nextStep.label}
-                      onConfirm={() => {
-                        if (nextStep.to === 'Completed') {
-                          // Return legs are paid with the outbound; paid bookings need no question.
-                          if (isReturnLeg(booking.notes) || String(booking.payment_status ?? '').toLowerCase() === 'paid') handleComplete(null)
-                          else setShowPaymentModal(true)
-                        } else {
-                          handleStatusUpdate(nextStep.to)
-                        }
-                      }}
-                      loading={updating}
-                      variant={nextStep.to === 'Completed' ? 'green' : 'gold'}
-                    />
-                  ) : (
-                    <div className="w-full h-16 rounded-2xl bg-[#f0f5fa] border border-[#c4d4e4] flex items-center justify-center gap-2">
-                      <Clock size={14} className="text-[#4f6580]" />
-                      <span className="text-[#4f6580] text-sm font-semibold">Available 24 h before pickup</span>
-                    </div>
-                  )}
-                </>
-              )}
 
               {/* No Show */}
               {showNoShow && !pobUndoActive && (
