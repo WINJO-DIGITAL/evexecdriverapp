@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Clock, Route, Navigation2 } from 'lucide-react'
-import { CONTACT_EMAIL } from '@/lib/config'
+import { BRAND } from '@/lib/brand'
 
 interface Props {
   pickup: string
@@ -15,7 +15,7 @@ async function geocode(address: string): Promise<LatLng | null> {
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`,
-      { headers: { 'User-Agent': `EVExecDriverApp/1.0 ${CONTACT_EMAIL}` } }
+      { headers: { 'User-Agent': `${BRAND.name.replace(/\s+/g, '')}DriverApp/1.0 ${BRAND.contactEmail}` } }
     )
     const data = await res.json()
     if (data?.[0]) return [parseFloat(data[0].lat), parseFloat(data[0].lon)]
@@ -138,20 +138,20 @@ export function JobMap({ pickup, dropoff }: Props) {
       {(eta || dist) && (
         <div className="flex items-center gap-4 px-4 py-3 border-t border-[#d8e6f0]">
           {eta && (
-            <span className="flex items-center gap-1.5 text-[#4a6a8a] text-xs">
-              <Clock size={11} className="text-[#d5a538]" /> {eta}
+            <span className="flex items-center gap-1.5 text-[#3b5470] text-xs">
+              <Clock size={11} className="text-[#7a5c14]" /> {eta}
             </span>
           )}
           {dist && (
-            <span className="flex items-center gap-1.5 text-[#4a6a8a] text-xs">
-              <Route size={11} className="text-[#d5a538]" /> {dist}
+            <span className="flex items-center gap-1.5 text-[#3b5470] text-xs">
+              <Route size={11} className="text-[#7a5c14]" /> {dist}
             </span>
           )}
           <a
             href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(pickup)}&destination=${encodeURIComponent(dropoff)}&travelmode=driving`}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-auto flex items-center gap-1 text-[#d5a538] text-xs font-semibold active:opacity-70"
+            className="ml-auto flex items-center gap-1 text-[#7a5c14] text-xs font-semibold active:opacity-70"
           >
             <Navigation2 size={11} /> Open Maps
           </a>

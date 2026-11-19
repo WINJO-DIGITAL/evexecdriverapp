@@ -5,8 +5,11 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Eye, EyeOff, Loader2, CheckCircle2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { BRAND } from '@/lib/brand'
+import { useSigninBrand } from '@/lib/use-signin-brand'
 
 export default function ResetPasswordPage() {
+  const brand = useSigninBrand()
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [password, setPassword] = useState('')
@@ -54,8 +57,8 @@ export default function ResetPasswordPage() {
     e.preventDefault()
     setError('')
 
-    if (password.length < 8) {
-      setError('Password must be at least 8 characters.')
+    if (password.length < 8 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+      setError('Password must be at least 8 characters, with a letter and a number.')
       return
     }
     if (password !== confirmPassword) {
@@ -81,26 +84,30 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-[#eaeff7]">
       <div className="mb-8 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="EV Exec" width={160} height={160} className="mx-auto" />
-        <p className="text-[#7a9ab8] mt-2 text-xs">Driver Portal</p>
+        {brand && !brand.logoUrl ? (
+          <p className="mx-auto max-w-xs text-2xl font-semibold text-[#060C1A]">{brand.name}</p>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={brand?.logoUrl || '/logo.png'} alt={brand?.name || BRAND.name} width={160} height={160} className="mx-auto max-h-40 w-auto object-contain" />
+        )}
+        <p className="text-[#4f6580] mt-2 text-xs">Driver Portal</p>
       </div>
 
       <div className="w-full max-w-sm bg-white border border-[#c4d4e4] rounded-2xl p-6 shadow-2xl">
         {success ? (
           <div className="text-center py-2">
-            <CheckCircle2 size={32} className="mx-auto mb-3 text-green-400" />
+            <CheckCircle2 size={32} className="mx-auto mb-3 text-green-800" />
             <h2 className="text-lg font-semibold text-[#060C1A] mb-2">Password updated</h2>
-            <p className="text-[#4a6a8a] text-sm">Taking you to your dashboard…</p>
+            <p className="text-[#3b5470] text-sm">Taking you to your dashboard…</p>
           </div>
         ) : (
           <>
             <h2 className="text-lg font-semibold text-[#060C1A] mb-2">{invite ? 'Welcome to the Driver App' : 'Set a new password'}</h2>
-            <p className="text-[#4a6a8a] text-sm mb-6">{invite ? 'Choose a password. You\'ll use it with your email address to sign in.' : 'Choose a new password for your account.'}</p>
+            <p className="text-[#3b5470] text-sm mb-6">{invite ? 'Choose a password. You\'ll use it with your email address to sign in.' : 'Choose a new password for your account.'}</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
+                <label className="block text-xs font-semibold text-[#4f6580] mb-2">
                   New Password
                 </label>
                 <div className="relative">
@@ -116,7 +123,7 @@ export default function ResetPasswordPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7a9ab8] hover:text-[#4a6a8a] transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4f6580] hover:text-[#3b5470] transition-colors"
                     tabIndex={-1}
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -125,7 +132,7 @@ export default function ResetPasswordPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
+                <label className="block text-xs font-semibold text-[#4f6580] mb-2">
                   Confirm Password
                 </label>
                 <input
@@ -140,7 +147,7 @@ export default function ResetPasswordPage() {
               </div>
 
               {error && (
-                <div className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2 space-y-1">
+                <div className="text-red-800 text-xs bg-red-100 border border-red-200 rounded-lg px-3 py-2 space-y-1">
                   <p>{error}</p>
                   {!ready ? null : (
                     <Link href="/forgot-password" className="underline inline-block">
@@ -154,7 +161,7 @@ export default function ResetPasswordPage() {
                 type="submit"
                 disabled={isPending || !ready}
                 className="w-full py-3.5 rounded-xl font-semibold text-[#020813] text-sm flex items-center justify-center gap-2 disabled:opacity-60 transition-opacity mt-2"
-                style={{ background: '#d5a538' }}
+                style={brand ? { background: brand.accent, color: brand.onAccent } : { background: '#d5a538' }}
               >
                 {isPending ? <Loader2 size={16} className="animate-spin" /> : null}
                 {isPending ? 'Saving…' : invite ? 'Set Password' : 'Update Password'}

@@ -5,15 +5,17 @@ import { useRouter } from 'next/navigation'
 import { logout } from '@/app/actions/auth'
 import {
   Car, ChevronRight, Phone, Mail, LogOut, Bell,
-  HelpCircle, Loader2, ClipboardList, MessageCircle, PoundSterling, Star,
+  HelpCircle, Loader2, ClipboardList, MessageCircle, PoundSterling,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { OPS_PHONE, OPS_WHATSAPP, SUPPORT_EMAIL } from '@/lib/config'
+import { BRAND } from '@/lib/brand'
+import { useBusiness } from '@/components/business'
 import type { Driver } from '@/lib/types'
 import { PushSettings } from '@/components/push-settings'
 
 export default function ProfilePage() {
   const router = useRouter()
+  const business = useBusiness()
   const [driver, setDriver] = useState<Driver | null>(null)
   const [email, setEmail] = useState<string | null>(null)
   const [tripCount, setTripCount] = useState(0)
@@ -48,7 +50,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#eaeff7] flex items-center justify-center">
-        <Loader2 className="animate-spin text-[#d5a538]" size={28} />
+        <Loader2 className="animate-spin text-[#7a5c14]" size={28} />
       </div>
     )
   }
@@ -68,36 +70,21 @@ export default function ProfilePage() {
           </div>
           <div className="flex-1 min-w-0">
             <h2 className="text-[#060C1A] font-bold text-lg">{driver?.full_name ?? 'Driver'}</h2>
-            <p className="text-[#7a9ab8] text-xs mt-0.5">
+            <p className="text-[#4f6580] text-xs mt-0.5">
               {tripCount > 0 ? `${tripCount} trips completed` : 'No trips yet'}
             </p>
-            {driver?.rating != null && (
-              <div className="flex items-center gap-1.5 mt-1.5">
-                <div className="flex items-center gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <Star
-                      key={i}
-                      size={12}
-                      className={i <= Math.round(driver.rating!) ? 'text-[#d5a538] fill-[#d5a538]' : 'text-white/15'}
-                    />
-                  ))}
-                </div>
-                <span className="text-[#2d4c6d] text-xs font-bold">{(driver.rating as number).toFixed(1)}</span>
-                <span className="text-[#7a9ab8] text-xs">driver rating</span>
-              </div>
-            )}
           </div>
         </div>
         <div className="mt-4 pt-4 border-t border-[#d8e6f0] space-y-2">
           {email && (
-            <div className="flex items-center gap-2 text-[#4a6a8a] text-sm">
-              <Mail size={14} className="text-[#7a9ab8]" />
+            <div className="flex items-center gap-2 text-[#3b5470] text-sm">
+              <Mail size={14} className="text-[#4f6580]" />
               {email}
             </div>
           )}
           {driver?.phone && (
-            <div className="flex items-center gap-2 text-[#4a6a8a] text-sm">
-              <Phone size={14} className="text-[#7a9ab8]" />
+            <div className="flex items-center gap-2 text-[#3b5470] text-sm">
+              <Phone size={14} className="text-[#4f6580]" />
               {driver.phone}
             </div>
           )}
@@ -109,19 +96,19 @@ export default function ProfilePage() {
       {(driver?.vehicle_model || driver?.vehicle_registration) && (
         <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
           <div className="flex items-center gap-2 mb-3">
-            <Car size={14} className="text-[#d5a538]" />
-            <p className="text-[#4a6a8a] text-xs font-semibold">Vehicle</p>
+            <Car size={14} className="text-[#7a5c14]" />
+            <p className="text-[#3b5470] text-xs font-semibold">Vehicle</p>
           </div>
           <div className="grid grid-cols-2 gap-y-3">
             {driver.vehicle_model && (
               <div>
-                <p className="text-[#7a9ab8] text-xs">Model</p>
+                <p className="text-[#4f6580] text-xs">Model</p>
                 <p className="text-[#060C1A] text-sm font-medium mt-0.5">{driver.vehicle_model}</p>
               </div>
             )}
             {driver.vehicle_registration && (
               <div>
-                <p className="text-[#7a9ab8] text-xs">Registration</p>
+                <p className="text-[#4f6580] text-xs">Registration</p>
                 <p className="text-[#060C1A] text-sm font-medium mt-0.5 font-mono">{driver.vehicle_registration}</p>
               </div>
             )}
@@ -138,10 +125,10 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#d8e6f0] active:bg-[#dce8f2]"
         >
           <div className="flex items-center gap-3">
-            <PoundSterling size={16} className="text-white/35" />
+            <PoundSterling size={16} className="text-[#4f6580]" />
             <span className="text-[#1e3a5f] text-sm">Earnings</span>
           </div>
-          <ChevronRight size={15} className="text-[#a8c0d4]" />
+          <ChevronRight size={15} className="text-[#5a6f88]" />
         </button>
 
         <button
@@ -149,12 +136,12 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#d8e6f0] active:bg-[#dce8f2]"
         >
           <div className="flex items-center gap-3">
-            <ClipboardList size={16} className="text-white/35" />
+            <ClipboardList size={16} className="text-[#4f6580]" />
             <span className="text-[#1e3a5f] text-sm">Trip History</span>
           </div>
           <div className="flex items-center gap-2">
-            {tripCount > 0 && <span className="text-[#7a9ab8] text-xs">{tripCount} trips</span>}
-            <ChevronRight size={15} className="text-[#a8c0d4]" />
+            {tripCount > 0 && <span className="text-[#4f6580] text-xs">{tripCount} trips</span>}
+            <ChevronRight size={15} className="text-[#5a6f88]" />
           </div>
         </button>
 
@@ -163,45 +150,61 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#d8e6f0] active:bg-[#dce8f2]"
         >
           <div className="flex items-center gap-3">
-            <Bell size={16} className="text-white/35" />
+            <Bell size={16} className="text-[#4f6580]" />
             <span className="text-[#1e3a5f] text-sm">Notifications</span>
           </div>
-          <ChevronRight size={15} className="text-[#a8c0d4]" />
+          <ChevronRight size={15} className="text-[#5a6f88]" />
         </button>
 
-        <a
-          href={`tel:${OPS_PHONE}`}
+        {business.phone && <a
+          href={`tel:${business.phone}`}
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#d8e6f0] active:bg-[#dce8f2]"
         >
           <div className="flex items-center gap-3">
-            <Phone size={16} className="text-[#d5a538]" />
+            <Phone size={16} className="text-[#7a5c14]" />
             <span className="text-[#1e3a5f] text-sm">Call Operations</span>
           </div>
-          <span className="text-[#7a9ab8] text-xs">EV Exec Dispatch</span>
-        </a>
+          <span className="text-[#4f6580] text-xs">{business.name} Dispatch</span>
+        </a>}
 
-        <a
-          href={OPS_WHATSAPP}
+        {business.whatsapp && <a
+          href={business.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#d8e6f0] active:bg-[#dce8f2]"
         >
           <div className="flex items-center gap-3">
-            <MessageCircle size={16} className="text-green-400" />
+            <MessageCircle size={16} className="text-green-800" />
             <span className="text-[#1e3a5f] text-sm">WhatsApp Dispatch</span>
           </div>
-          <ChevronRight size={15} className="text-[#a8c0d4]" />
-        </a>
+          <ChevronRight size={15} className="text-[#5a6f88]" />
+        </a>}
 
         <a
-          href={`mailto:${SUPPORT_EMAIL}`}
+          href={`mailto:${BRAND.supportEmail}`}
           className="w-full flex items-center justify-between px-4 py-3.5 active:bg-[#dce8f2]"
         >
           <div className="flex items-center gap-3">
-            <HelpCircle size={16} className="text-white/35" />
+            <HelpCircle size={16} className="text-[#4f6580]" />
             <span className="text-[#1e3a5f] text-sm">Help &amp; Support</span>
           </div>
-          <ChevronRight size={15} className="text-[#a8c0d4]" />
+          <ChevronRight size={15} className="text-[#5a6f88]" />
+        </a>
+      </div>
+
+      {/* Your data: what is tracked and how long it is kept, plus a way to ask for a copy */}
+      <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
+        <h3 className="text-[#060C1A] font-semibold text-sm mb-2">Your data</h3>
+        <ul className="text-[#3b5470] text-xs leading-relaxed list-disc pl-4 space-y-1">
+          <li>Your location is shared only while a job is on its way: from Head to Pickup until the passenger is on board.</li>
+          <li>Only your latest position is kept. There is no travel history of where you have been.</li>
+          <li>Job records are kept for the business&apos;s own records, as set out in its privacy notice.</li>
+        </ul>
+        <a
+          href={`mailto:${BRAND.supportEmail}?subject=${encodeURIComponent('My data request')}`}
+          className="mt-3 inline-flex items-center gap-2 text-[#1e3a5f] text-sm font-semibold underline"
+        >
+          Ask for a copy of your data
         </a>
       </div>
 
@@ -209,14 +212,14 @@ export default function ProfilePage() {
       <form action={logout}>
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl border border-red-500/25 text-red-400 text-sm font-semibold bg-red-500/8 active:opacity-70 transition-opacity"
+          className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl border border-red-200 text-red-800 text-sm font-semibold bg-red-100 active:opacity-70 transition-opacity"
         >
           <LogOut size={16} />
           Sign Out
         </button>
       </form>
 
-      <p className="text-center text-white/15 text-xs mt-4">EV Exec Driver v1.0</p>
+      <p className="text-center text-[#c4d4e4] text-xs mt-4">{business.name} Driver v1.0</p>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-const CACHE = 'evexec-driver-v1'
+const CACHE = 'evexec-driver-v2'
 
 self.addEventListener('install', () => { self.skipWaiting() })
 
@@ -39,10 +39,10 @@ self.addEventListener('push', (event) => {
   try { data = event.data?.json() ?? {} } catch { data = { body: event.data?.text() } }
   const tag = data.tag ?? `${data.url ?? '/jobs'}|${data.title ?? ''}`
   event.waitUntil(
-    self.registration.showNotification(data.title ?? 'EV Exec Driver', {
+    self.registration.showNotification(data.title ?? 'New notification', {
       body: data.body ?? 'You have an update',
-      icon: '/logo.png',
-      badge: '/logo.png',
+      icon: '/icons/icon-192.png',
+      badge: '/icons/badge-96.png',
       vibrate: [200, 100, 200],
       tag,
       renotify: true,

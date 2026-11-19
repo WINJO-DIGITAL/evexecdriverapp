@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { login } from '@/app/actions/auth'
-import { LOGIN_EMAIL_PLACEHOLDER } from '@/lib/config'
+import { BRAND } from '@/lib/brand'
+import { useSigninBrand } from '@/lib/use-signin-brand'
 
 export default function LoginPage() {
+  const brand = useSigninBrand()
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
@@ -29,17 +31,21 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-[#020813]">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-[#020813]" style={brand ? { background: brand.primary } : undefined}>
       {/* Logo */}
       <div className="mb-8 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/logo.png"
-          alt="EV Exec"
-          width={160}
-          height={160}
-          className="mx-auto"
-        />
+        {brand && !brand.logoUrl ? (
+          <p className="mx-auto max-w-xs text-2xl font-semibold" style={{ color: brand.accent }}>{brand.name}</p>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={brand?.logoUrl || '/logo.png'}
+            alt={brand?.name || BRAND.name}
+            width={160}
+            height={160}
+            className="mx-auto max-h-40 w-auto object-contain"
+          />
+        )}
         <p className="text-white/50 mt-2 text-xs">Driver Portal</p>
       </div>
 
@@ -49,20 +55,20 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
+            <label className="block text-xs font-semibold text-[#4f6580] mb-2">
               Email
             </label>
             <input
               type="email"
               name="email"
               required
-              placeholder={LOGIN_EMAIL_PLACEHOLDER}
+              placeholder={brand ? 'you@example.com' : BRAND.loginPlaceholder}
               className="w-full bg-[#dce8f2] border border-[#c4d4e4] rounded-xl px-4 py-3 text-[#060C1A] placeholder-[#7a9ab8] text-sm focus:outline-none focus:border-[#d5a538] focus:ring-1 focus:ring-[#d5a538] transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#7a9ab8] mb-2">
+            <label className="block text-xs font-semibold text-[#4f6580] mb-2">
               Password
             </label>
             <div className="relative">
@@ -76,21 +82,21 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7a9ab8] hover:text-[#4a6a8a] transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4f6580] hover:text-[#3b5470] transition-colors"
                 tabIndex={-1}
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
             <div className="text-right mt-2">
-              <Link href="/forgot-password" className="text-[#d5a538] text-xs font-medium">
+              <Link href="/forgot-password" className="text-[#7a5c14] text-xs font-medium">
                 Forgot password?
               </Link>
             </div>
           </div>
 
           {error && (
-            <p className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2">
+            <p className="text-red-800 text-xs bg-red-100 border border-red-200 rounded-lg px-3 py-2">
               {error}
             </p>
           )}
@@ -99,15 +105,15 @@ export default function LoginPage() {
             type="submit"
             disabled={isPending}
             className="w-full py-3.5 rounded-xl font-semibold text-[#020813] text-sm flex items-center justify-center gap-2 disabled:opacity-60 transition-opacity mt-2"
-            style={{ background: '#d5a538' }}
+            style={brand ? { background: brand.accent, color: brand.onAccent } : { background: '#d5a538' }}
           >
             {isPending ? <Loader2 size={16} className="animate-spin" /> : null}
             {isPending ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
 
-        <p className="text-center text-xs text-[#a8c0d4] mt-6">
-          Account access is managed by EV Exec
+        <p className="text-center text-xs text-[#5a6f88] mt-6">
+          Account access is managed by {brand?.name || BRAND.name}
         </p>
       </div>
     </div>

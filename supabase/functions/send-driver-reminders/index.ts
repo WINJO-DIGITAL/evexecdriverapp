@@ -6,7 +6,10 @@
 // Notifies the assigned driver:
 //   - 24 h before pickup  → type 'driver_reminder_24h'
 //   - 1 h before pickup   → type 'driver_reminder_1h'
-// This is the only driver reminder (the database no longer queues its own).
+// The database also queues a 24 h reminder email when a driver is assigned
+// (enqueue_driver_notifications); this function then sends only the push.
+// Trusted partners (drivers.kind = 'partner', no Driver App) are skipped:
+// they get that database email only.
 //
 // Delivery: push primary; if push fails or there's no subscription, the
 // reminder email is queued for the website to send.
@@ -18,10 +21,11 @@ import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 import { createClient } from 'jsr:@supabase/supabase-js@2'
 import { pushToDriver, queueEmail, type NotificationType } from '../_shared/notify.ts'
 import { reminderEmail, stopsFromNotes } from '../_shared/email.ts'
+import { loadBrand } from '../_shared/brand.ts'
 
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL') ?? ''
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-const APP_URL = Deno.env.get('APP_URL') ?? 'https://evexec.co.uk'
+const APP_URL = Deno.env.get('APP_URL') ?? 'https://evexecdriverapp.vercel.app'
 
 // Booking statuses that can still have upcoming pickups
 const ACTIVE_STATUSES = [
@@ -86,7 +90,7 @@ Deno.serve(async (_req) => {
     // +/- 1 day band by date and match the exact window in code.
     const { data: rows, error } = await supabase
       .from('bookings')
-      .select('id, ref, customer_name, pickup_location, airport, dropoff_address, destination, notes, journey_type, pickup_time, travel_date, travel_time, passengers, assigned_driver_id')
+      .select('id, ref, customer_name, pickup_location, airport, dropoff_address, destination, notes, journey_type, pickup_time, travel_date, travel_time, passengers, assigned_driver_id, tenant_id')
       .in('status', ACTIVE_STATUSES)
       .not('assigned_driver_id', 'is', null)
       .gte('travel_date', dateOnly(target - 86_400_000))
@@ -102,7 +106,18 @@ Deno.serve(async (_req) => {
       continue
     }
 
+    const driverIds = [...new Set(bookings.map((b) => b.assigned_driver_id))]
+    const { data: partnerRows } = driverIds.length
+      ? await supabase.from('drivers').select('id').in('id', driverIds).eq('kind', 'partner')
+      : { data: [] }
+    const partners = new Set((partnerRows ?? []).map((d: { id: string }) => d.id))
+
     for (const booking of bookings) {
+      if (partners.has(booking.assigned_driver_id)) {
+        summary.skipped++
+        continue
+      }
+
       // Deduplication guard — check notification_log (successful deliveries) AND
       // notification_queue (any attempt in the last 90 min, including failures).
       // Without the queue check, a failed push+email attempt leaves no log entry
@@ -170,6 +185,24 @@ Deno.serve(async (_req) => {
         continue
       }
 
+      // The database queues its own 24 h reminder email when the driver is
+      // assigned (enqueue_driver_notifications); don't send a second one.
+      if (reminder.type === 'driver_reminder_24h') {
+        const { data: dbEmail } = await supabase
+          .from('notification_queue')
+          .select('id')
+          .eq('booking_id', booking.id)
+          .eq('type', reminder.type)
+          .eq('channel', 'email')
+          .in('status', ['pending', 'sent'])
+          .limit(1)
+          .maybeSingle()
+        if (dbEmail) {
+          summary.skipped++
+          continue
+        }
+      }
+
       // Email fallback — fetch driver email
       const { data: driver } = await supabase
         .from('drivers')
@@ -195,6 +228,7 @@ Deno.serve(async (_req) => {
         stops: stopsFromNotes(booking.notes),
         type: reminderType,
         bookingUrl,
+        brand: await loadBrand(supabase, booking.tenant_id),
       })
 
       const queued = await queueEmail(supabase, { bookingId: booking.id, type: reminder.type, to: driver.email, subject, html, body: pushBody })
