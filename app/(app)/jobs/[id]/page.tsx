@@ -250,7 +250,7 @@ function PaymentModal({
     <div className="fixed inset-0 flex flex-col justify-end" style={{ background: 'rgba(2,8,19,0.85)', zIndex: 9999 }}>
       <div className="bg-white rounded-t-3xl px-5 pt-5 pb-10">
         <div className="w-10 h-1 rounded-full bg-[#c4d4e4] mx-auto mb-5" />
-        <h2 className="text-[#060C1A] font-bold text-lg mb-1">How was payment made?</h2>
+        <h2 className="text-[#060C1A] font-bold text-lg mb-1">How Was Payment Made?</h2>
         <p className="text-[#4f6580] text-xs mb-5">Confirm before completing the journey</p>
 
         <div className="grid grid-cols-3 gap-3 mb-5">

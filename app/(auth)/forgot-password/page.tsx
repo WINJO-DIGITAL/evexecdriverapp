@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
         {sent ? (
           <div className="text-center py-2">
             <MailCheck size={32} className="mx-auto mb-3 text-[#7a5c14]" />
-            <h2 className="text-lg font-semibold text-[#060C1A] mb-2">Check your email</h2>
+            <h2 className="text-lg font-semibold text-[#060C1A] mb-2">Check Your Email</h2>
             <p className="text-[#3b5470] text-sm">
               If an account exists for <span className="text-[#1e3a5f]">{email}</span>, we&apos;ve sent a link to reset your password.
             </p>
@@ -63,7 +63,7 @@ export default function ForgotPasswordPage() {
           </div>
         ) : (
           <>
-            <h2 className="text-lg font-semibold text-[#060C1A] mb-2">Reset your password</h2>
+            <h2 className="text-lg font-semibold text-[#060C1A] mb-2">Reset Your Password</h2>
             <p className="text-[#4f6580] text-sm mb-6">
               Enter the email associated with your driver account and we&apos;ll send you a link to reset your password.
             </p>

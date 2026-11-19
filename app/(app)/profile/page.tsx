@@ -194,7 +194,7 @@ export default function ProfilePage() {
 
       {/* Your data: what is tracked and how long it is kept, plus a way to ask for a copy */}
       <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
-        <h3 className="text-[#060C1A] font-semibold text-sm mb-2">Your data</h3>
+        <h3 className="text-[#060C1A] font-semibold text-sm mb-2">Your Data</h3>
         <ul className="text-[#3b5470] text-xs leading-relaxed list-disc pl-4 space-y-1">
           <li>Your location is shared only while a job is on its way: from Head to Pickup until the passenger is on board.</li>
           <li>Only your latest position is kept. There is no travel history of where you have been.</li>
