@@ -157,20 +157,20 @@ function EarningsContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#eaeff7] px-4 pt-12 pb-4">
+    <div className="min-h-screen bg-[#F4F5F7] px-4 pt-12 pb-4">
       <div className="mb-6">
         <h1 className="text-[#060C1A] font-bold text-xl">Earnings</h1>
-        <p className="text-[#4f6580] text-xs mt-1">Your payment summary</p>
+        <p className="text-[#535B68] text-xs mt-1">Your payment summary</p>
       </div>
 
       {/* View Switcher */}
-      <div className="flex gap-1 bg-[#dce8f2] rounded-xl p-1 mb-5">
+      <div className="flex gap-1 bg-[#EEF0F3] rounded-xl p-1 mb-5">
         {(['overview', 'report'] as View[]).map((v) => (
           <button
             key={v}
             onClick={() => setView(v)}
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all ${
-              view === v ? 'text-[#020813]' : 'text-[#4f6580] hover:text-[#3b5470]'
+              view === v ? 'text-[#020813]' : 'text-[#535B68] hover:text-[#3A414C]'
             }`}
             style={view === v ? { background: '#d5a538' } : {}}
           >
@@ -192,7 +192,7 @@ function EarningsContent() {
                 key={p}
                 onClick={() => setPeriod(p)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border ${
-                  period === p ? 'border-[#d5a538]/40 text-[#7a5c14] bg-[#d5a538]/8' : 'border-[#c4d4e4] text-[#4f6580]'
+                  period === p ? 'border-[#d5a538]/40 text-[#7a5c14] bg-[#d5a538]/8' : 'border-[#E2E5EA] text-[#535B68]'
                 }`}
               >
                 {PERIOD_LABELS[p]}
@@ -221,34 +221,34 @@ function EarningsContent() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
+            <div className="bg-white border border-[#E2E5EA] rounded-xl p-3 text-center">
               <Briefcase size={16} className="mx-auto mb-1 text-[#7a5c14]" />
               <p className="text-[#060C1A] font-bold text-lg">{periodTrips}</p>
-              <p className="text-[#4f6580] text-xs">Jobs</p>
+              <p className="text-[#535B68] text-xs">Jobs</p>
             </div>
-            <div className="bg-white border border-[#c4d4e4] rounded-xl p-3 text-center">
+            <div className="bg-white border border-[#E2E5EA] rounded-xl p-3 text-center">
               <TrendingUp size={16} className="mx-auto mb-1 text-[#7a5c14]" />
               <p className="text-[#060C1A] font-bold text-lg">£{perJob.toFixed(0)}</p>
-              <p className="text-[#4f6580] text-xs">Per Job avg</p>
+              <p className="text-[#535B68] text-xs">Per Job avg</p>
             </div>
           </div>
 
           {/* Performance */}
           {(completionRate !== null || onTimeRate !== null) && (
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-5">
-              <p className="text-xs font-semibold text-[#4f6580] mb-3">Performance</p>
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4 mb-5">
+              <p className="text-xs font-semibold text-[#535B68] mb-3">Performance</p>
               <div className="grid grid-cols-2 gap-4">
                 {completionRate !== null && (
                   <div>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <CheckCircle2 size={13} className="text-[#047857]" />
-                      <p className="text-[#4f6580] text-xs">Completion</p>
+                      <p className="text-[#535B68] text-xs">Completion</p>
                     </div>
                     <p className={`text-2xl font-bold ${completionRate >= 90 ? 'text-[#047857]' : completionRate >= 75 ? 'text-amber-800' : 'text-red-800'}`}>
                       {completionRate}%
                     </p>
-                    <p className="text-[#5a6f88] text-[10px] mt-0.5">{completedCount} of {finalisedCount} jobs</p>
-                    <div className="h-1 bg-[#dce8f2] rounded-full mt-2 overflow-hidden">
+                    <p className="text-[#646C78] text-[10px] mt-0.5">{completedCount} of {finalisedCount} jobs</p>
+                    <div className="h-1 bg-[#EEF0F3] rounded-full mt-2 overflow-hidden">
                       <div
                         className="h-full rounded-full"
                         style={{
@@ -263,13 +263,13 @@ function EarningsContent() {
                   <div>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <Clock size={13} className="text-[#7a5c14]" />
-                      <p className="text-[#4f6580] text-xs">On Time</p>
+                      <p className="text-[#535B68] text-xs">On Time</p>
                     </div>
                     <p className={`text-2xl font-bold ${onTimeRate >= 90 ? 'text-[#047857]' : onTimeRate >= 75 ? 'text-amber-800' : 'text-red-800'}`}>
                       {onTimeRate}%
                     </p>
-                    <p className="text-[#5a6f88] text-[10px] mt-0.5">{onTimeCount} of {trackedJobs.length} tracked</p>
-                    <div className="h-1 bg-[#dce8f2] rounded-full mt-2 overflow-hidden">
+                    <p className="text-[#646C78] text-[10px] mt-0.5">{onTimeCount} of {trackedJobs.length} tracked</p>
+                    <div className="h-1 bg-[#EEF0F3] rounded-full mt-2 overflow-hidden">
                       <div
                         className="h-full rounded-full"
                         style={{
@@ -286,9 +286,9 @@ function EarningsContent() {
 
           {/* Jobs list */}
           {periodBookings.length === 0 ? (
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-12 text-center">
-              <PoundSterling size={28} className="mx-auto mb-3 text-[#5a6f88]" />
-              <p className="text-[#4f6580] text-sm">
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
+              <PoundSterling size={28} className="mx-auto mb-3 text-[#646C78]" />
+              <p className="text-[#535B68] text-sm">
                 No completed jobs {period === 'today' ? 'today' : `this ${period}`}
               </p>
             </div>
@@ -300,11 +300,11 @@ function EarningsContent() {
                   const pickup = booking.pickup_location ?? booking.airport ?? '—'
                   const dropoff = booking.dropoff_address ?? '—'
                   return (
-                    <div key={booking.id} className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
+                    <div key={booking.id} className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <p className="text-[#060C1A] font-medium text-sm">{booking.customer_name}</p>
-                          <p className="text-[#4f6580] text-xs mt-0.5">
+                          <p className="text-[#535B68] text-xs mt-0.5">
                             {formatDate(booking.travel_date)}
                             {booking.travel_time ? ` · ${formatTime(booking.travel_time)}` : ''}
                           </p>
@@ -313,10 +313,10 @@ function EarningsContent() {
                           <p className="text-[#7a5c14] font-bold">£{booking.quoted_price.toFixed(2)}</p>
                         )}
                       </div>
-                      <div className="flex items-center gap-1.5 text-xs text-[#4f6580] min-w-0">
+                      <div className="flex items-center gap-1.5 text-xs text-[#535B68] min-w-0">
                         <PickupIcon booking={booking} size={11} />
                         <span className="truncate">{pickup}</span>
-                        <span className="text-[#5a6f88] mx-0.5 flex-shrink-0">→</span>
+                        <span className="text-[#646C78] mx-0.5 flex-shrink-0">→</span>
                         <DropoffIcon size={11} />
                         <span className="truncate">{dropoff}</span>
                       </div>
@@ -333,35 +333,35 @@ function EarningsContent() {
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={prevMonth}
-              className="w-9 h-9 rounded-xl bg-[#dce8f2] flex items-center justify-center active:opacity-70"
+              className="w-9 h-9 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70"
             >
-              <ChevronLeft size={18} className="text-[#3b5470]" />
+              <ChevronLeft size={18} className="text-[#3A414C]" />
             </button>
             <span className="text-[#060C1A] font-semibold text-base">{MONTHS[month]} {year}</span>
             <button
               onClick={nextMonth}
-              className="w-9 h-9 rounded-xl bg-[#dce8f2] flex items-center justify-center active:opacity-70"
+              className="w-9 h-9 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70"
             >
-              <ChevronRight size={18} className="text-[#3b5470]" />
+              <ChevronRight size={18} className="text-[#3A414C]" />
             </button>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-              <p className="text-[#4f6580] text-[11px]">This Month</p>
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-3 text-center">
+              <p className="text-[#535B68] text-[11px]">This Month</p>
               <p className="text-[#060C1A] font-bold text-xl mt-0.5">{monthBookings.length}</p>
-              <p className="text-[#5a6f88] text-[9px] mt-0.5">trips</p>
+              <p className="text-[#646C78] text-[9px] mt-0.5">trips</p>
             </div>
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-              <p className="text-[#4f6580] text-[11px]">Earned</p>
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-3 text-center">
+              <p className="text-[#535B68] text-[11px]">Earned</p>
               <p className="text-[#7a5c14] font-bold text-xl mt-0.5">£{monthEarnings.toFixed(0)}</p>
-              <p className="text-[#5a6f88] text-[9px] mt-0.5">this month</p>
+              <p className="text-[#646C78] text-[9px] mt-0.5">this month</p>
             </div>
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-3 text-center">
-              <p className="text-[#4f6580] text-[11px]">All Time</p>
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-3 text-center">
+              <p className="text-[#535B68] text-[11px]">All Time</p>
               <p className="text-[#7a5c14] font-bold text-xl mt-0.5">£{allEarnings.toFixed(0)}</p>
-              <p className="text-[#5a6f88] text-[9px] mt-0.5">{bookings.length} trips</p>
+              <p className="text-[#646C78] text-[9px] mt-0.5">{bookings.length} trips</p>
             </div>
           </div>
 
@@ -382,13 +382,13 @@ function EarningsContent() {
             }
             const maxEarn = Math.max(...weeks.map(w => w.earn), 1)
             return (
-              <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
-                <p className="text-xs font-semibold text-[#4f6580] mb-3">Weekly Breakdown</p>
+              <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4 mb-4">
+                <p className="text-xs font-semibold text-[#535B68] mb-3">Weekly Breakdown</p>
                 <div className="space-y-2">
                   {weeks.map(w => (
                     <div key={w.label} className="flex items-center gap-3">
-                      <span className="text-[#4f6580] text-[10px] w-20 flex-shrink-0">{w.label}</span>
-                      <div className="flex-1 h-1.5 rounded-full bg-[#dce8f2] overflow-hidden">
+                      <span className="text-[#535B68] text-[10px] w-20 flex-shrink-0">{w.label}</span>
+                      <div className="flex-1 h-1.5 rounded-full bg-[#EEF0F3] overflow-hidden">
                         <div
                           className="h-full rounded-full"
                           style={{ width: `${(w.earn / maxEarn) * 100}%`, background: '#d5a538' }}
@@ -417,19 +417,19 @@ function EarningsContent() {
 
           {/* Job list */}
           {monthBookings.length === 0 ? (
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-12 text-center">
-              <ClipboardList size={32} className="mx-auto mb-3 text-[#5a6f88]" />
-              <p className="text-[#4f6580] text-sm">No completed trips in {MONTHS[month]}</p>
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
+              <ClipboardList size={32} className="mx-auto mb-3 text-[#646C78]" />
+              <p className="text-[#535B68] text-sm">No completed trips in {MONTHS[month]}</p>
             </div>
           ) : (
             <div className="space-y-3">
               {monthBookings.map((job) => {
                 return (
-                  <div key={job.id} className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
+                  <div key={job.id} className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
                     <div className="flex items-start justify-between gap-2 mb-3">
                       <div>
                         <p className="text-[#060C1A] font-semibold text-sm">{job.customer_name}</p>
-                        <p className="text-[#4f6580] text-xs mt-0.5">
+                        <p className="text-[#535B68] text-xs mt-0.5">
                           {formatDate(job.travel_date)}{job.travel_time ? ` · ${formatTime(job.travel_time)}` : ''}
                         </p>
                       </div>
@@ -454,7 +454,7 @@ function EarningsContent() {
 export default function EarningsPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#eaeff7] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center">
         <div className="w-7 h-7 rounded-full border-2 border-[#d5a538] border-t-transparent animate-spin" />
       </div>
     }>

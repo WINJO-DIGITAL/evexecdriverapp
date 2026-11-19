@@ -25,34 +25,34 @@ function sortNearestFirst(list: Booking[]) {
 function BookingCard({ booking }: { booking: Booking }) {
   return (
     <Link href={`/jobs/${booking.id}`}>
-      <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 shadow-sm active:opacity-80 transition-opacity">
+      <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4 shadow-sm active:opacity-80 transition-opacity">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2">
             <span className="text-[#7a5c14] font-bold text-base">{formatTime(booking.travel_time)}</span>
-            <span className="text-[#5a6f88] text-xs">{formatDate(booking.travel_date)}</span>
+            <span className="text-[#646C78] text-xs">{formatDate(booking.travel_date)}</span>
           </div>
           <div className="flex items-center gap-2">
             <BookingStatusBadge status={booking.status} />
-            <ChevronRight size={14} className="text-[#4f6580]" />
+            <ChevronRight size={14} className="text-[#535B68]" />
           </div>
         </div>
 
         <div className="flex items-baseline justify-between gap-2 mb-0.5">
           <p className="text-[#060C1A] font-semibold text-[15px]">{booking.customer_name}</p>
           {booking.ref && (
-            <span className="text-[#4f6580] text-[10px] font-mono flex-shrink-0">{booking.ref}</span>
+            <span className="text-[#535B68] text-[10px] font-mono flex-shrink-0">{booking.ref}</span>
           )}
         </div>
         {booking.journey_type && (
-          <p className="text-[#4f6580] text-xs mb-3 capitalize">{booking.journey_type.replace(/_/g, ' ')}</p>
+          <p className="text-[#535B68] text-xs mb-3 capitalize">{booking.journey_type.replace(/_/g, ' ')}</p>
         )}
 
         <RouteDisplay booking={booking} />
 
         {(booking.quoted_price || booking.payment_method || booking.payment_status) && (
-          <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[#d8e6f0]">
+          <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[#ECEEF2]">
             {booking.passengers > 0 && (
-              <span className="text-[#4f6580] text-xs flex items-center gap-1">
+              <span className="text-[#535B68] text-xs flex items-center gap-1">
                 <Users size={11} /> {booking.passengers}
               </span>
             )}
@@ -190,24 +190,24 @@ export default function JobsPage() {
   const today = formatStampDate(new Date())
 
   return (
-    <div className="min-h-screen bg-[#eaeff7] px-4 pt-12 pb-4">
+    <div className="min-h-screen bg-[#F4F5F7] px-4 pt-12 pb-4">
       <div className="mb-4">
         <h1 className="text-[#060C1A] font-bold text-xl">Jobs</h1>
-        <p className="text-[#4f6580] text-xs mt-1">{today}</p>
+        <p className="text-[#535B68] text-xs mt-1">{today}</p>
       </div>
 
       {/* Search */}
       <div className="relative mb-4">
-        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#4f6580] pointer-events-none" />
+        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#535B68] pointer-events-none" />
         <input
           type="text"
           placeholder="Search by name or reference"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full bg-[#dce8f2] border border-[#c4d4e4] rounded-xl pl-8 pr-8 py-2.5 text-[#060C1A] text-sm placeholder-[#7a9ab8] focus:outline-none focus:border-[#d5a538]/50"
+          className="w-full bg-[#EEF0F3] border border-[#E2E5EA] rounded-xl pl-8 pr-8 py-2.5 text-[#060C1A] text-sm placeholder-[#636B77] focus:outline-none focus:border-[#d5a538]/50"
         />
         {search && (
-          <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4f6580]">
+          <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#535B68]">
             <X size={14} />
           </button>
         )}
@@ -226,7 +226,7 @@ export default function JobsPage() {
             className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all"
             style={dateFilter === key
               ? { background: '#d5a538', color: '#020813', borderColor: 'transparent' }
-              : { background: '#ffffff', color: '#3b5470', borderColor: '#c4d4e4' }
+              : { background: '#ffffff', color: '#3A414C', borderColor: '#E2E5EA' }
             }
           >
             {label}
@@ -234,7 +234,7 @@ export default function JobsPage() {
         ))}
       </div>
 
-      <div className="flex gap-1 bg-[#dce8f2] rounded-xl p-1 mb-5">
+      <div className="flex gap-1 bg-[#EEF0F3] rounded-xl p-1 mb-5">
         {([
           { key: 'active' as Tab, label: `Active (${active.length})` },
           { key: 'upcoming' as Tab, label: `Upcoming (${upcoming.length})` },
@@ -244,7 +244,7 @@ export default function JobsPage() {
             key={key}
             onClick={() => chooseTab(key)}
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all ${
-              tab === key ? 'text-[#020813]' : 'text-[#4f6580] hover:text-[#3b5470]'
+              tab === key ? 'text-[#020813]' : 'text-[#535B68] hover:text-[#3A414C]'
             }`}
             style={tab === key ? { background: '#d5a538' } : {}}
           >
@@ -258,7 +258,7 @@ export default function JobsPage() {
           <div className="w-7 h-7 rounded-full border-2 border-[#d5a538] border-t-transparent animate-spin" />
         </div>
       ) : currentList.length === 0 ? (
-        <p className="text-[#4f6580] text-sm text-center py-12">No {tab === 'completed' ? 'finished' : tab} jobs.</p>
+        <p className="text-[#535B68] text-sm text-center py-12">No {tab === 'completed' ? 'finished' : tab} jobs.</p>
       ) : (
         <div className="space-y-3">
           {currentList.map((booking) => (

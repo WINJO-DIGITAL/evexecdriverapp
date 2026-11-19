@@ -111,33 +111,33 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#eaeff7] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center">
         <div className="w-8 h-8 rounded-full border-2 border-[#d5a538] border-t-transparent animate-spin" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-[#eaeff7] px-4 pt-12 pb-4">
+    <div className="min-h-screen bg-[#F4F5F7] px-4 pt-12 pb-4">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <p className="text-[#4f6580] text-xs">{greeting()}</p>
+          <p className="text-[#535B68] text-xs">{greeting()}</p>
           <h1 className="text-[#060C1A] font-semibold text-lg mt-0.5">{driver?.full_name ?? 'Driver'}</h1>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={async () => { setRefreshing(true); await loadData(); setRefreshing(false) }}
             disabled={refreshing}
-            className="w-10 h-10 rounded-xl bg-[#dce8f2] border border-[#c4d4e4] flex items-center justify-center active:opacity-70 disabled:opacity-50"
+            className="w-10 h-10 rounded-xl bg-[#EEF0F3] border border-[#E2E5EA] flex items-center justify-center active:opacity-70 disabled:opacity-50"
           >
-            <RefreshCw size={16} className={`text-[#3b5470] ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw size={16} className={`text-[#3A414C] ${refreshing ? 'animate-spin' : ''}`} />
           </button>
           <Link
             href="/notifications"
-            className="relative w-10 h-10 rounded-xl bg-[#dce8f2] border border-[#c4d4e4] flex items-center justify-center"
+            className="relative w-10 h-10 rounded-xl bg-[#EEF0F3] border border-[#E2E5EA] flex items-center justify-center"
           >
-            <Bell size={18} className="text-[#3b5470]" />
+            <Bell size={18} className="text-[#3A414C]" />
             {upcomingBookings.length > 0 && (
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#d5a538]" />
             )}
@@ -165,11 +165,11 @@ export default function DashboardPage() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">
                   <p className="text-[#060C1A] font-semibold text-sm">{b.customer_name}</p>
-                  <p className="text-[#4f6580] text-xs mt-0.5">
+                  <p className="text-[#535B68] text-xs mt-0.5">
                     {b.travel_date ? formatDate(b.travel_date) : ''}
                     {b.travel_time ? ` · ${formatTime(b.travel_time)}` : ''}
                   </p>
-                  <p className="text-[#4f6580] text-xs mt-0.5 truncate">
+                  <p className="text-[#535B68] text-xs mt-0.5 truncate">
                     {b.pickup_location ?? b.airport ?? '—'}
                   </p>
                 </div>
@@ -211,7 +211,7 @@ export default function DashboardPage() {
               <ChevronRight size={16} className="text-[#7a5c14]" />
             </div>
             <p className="text-[#060C1A] font-semibold text-sm">{activeBooking.customer_name}</p>
-            <p className="text-[#3b5470] text-xs mt-0.5">
+            <p className="text-[#3A414C] text-xs mt-0.5">
               {activeBooking.pickup_location ?? activeBooking.airport ?? 'Pickup location'}
             </p>
           </div>
@@ -220,17 +220,17 @@ export default function DashboardPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3 mb-5">
-        <div className="bg-white border border-[#c4d4e4] rounded-xl px-3 py-2.5">
+        <div className="bg-white border border-[#E2E5EA] rounded-xl px-3 py-2.5">
           <p className="text-[#060C1A] font-semibold text-xl leading-none tabular-nums">{upcomingBookings.length + (activeBooking ? 1 : 0)}</p>
-          <p className="text-[#4f6580] text-xs mt-1">Today</p>
+          <p className="text-[#535B68] text-xs mt-1">Today</p>
         </div>
-        <div className="bg-white border border-[#c4d4e4] rounded-xl px-3 py-2.5">
+        <div className="bg-white border border-[#E2E5EA] rounded-xl px-3 py-2.5">
           <p className="text-[#060C1A] font-semibold text-xl leading-none tabular-nums">{completedTodayCount}</p>
-          <p className="text-[#4f6580] text-xs mt-1">Done</p>
+          <p className="text-[#535B68] text-xs mt-1">Done</p>
         </div>
-        <div className="bg-white border border-[#c4d4e4] rounded-xl px-3 py-2.5">
+        <div className="bg-white border border-[#E2E5EA] rounded-xl px-3 py-2.5">
           <p className="text-[#060C1A] font-semibold text-xl leading-none tabular-nums">{bookings.length}</p>
-          <p className="text-[#4f6580] text-xs mt-1">Total</p>
+          <p className="text-[#535B68] text-xs mt-1">Total</p>
         </div>
       </div>
 
@@ -243,23 +243,23 @@ export default function DashboardPage() {
       </div>
 
       {upcomingBookings.length === 0 && !activeBooking ? (
-        <p className="text-[#4f6580] text-sm py-2">No upcoming jobs today.</p>
+        <p className="text-[#535B68] text-sm py-2">No upcoming jobs today.</p>
       ) : (
         <div className="space-y-3">
           {upcomingBookings.slice(0, 3).map((booking) => (
             <Link key={booking.id} href={`/jobs/${booking.id}`}>
-              <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 shadow-sm active:opacity-80 transition-opacity">
+              <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4 shadow-sm active:opacity-80 transition-opacity">
                 <div className="flex items-start justify-between mb-2">
                   <span className="text-[#7a5c14] font-bold text-base">{formatTime(booking.travel_time)}</span>
                   <div className="flex items-center gap-2">
                     <BookingStatusBadge status={booking.status} />
-                    <ChevronRight size={14} className="text-[#4f6580]" />
+                    <ChevronRight size={14} className="text-[#535B68]" />
                   </div>
                 </div>
                 <p className="text-[#060C1A] font-semibold text-[15px] mb-3">{booking.customer_name}</p>
                 <RouteDisplay booking={booking} />
                 {!!booking.quoted_price && (
-                  <div className="flex items-center mt-3 pt-3 border-t border-[#d8e6f0]">
+                  <div className="flex items-center mt-3 pt-3 border-t border-[#ECEEF2]">
                     <span className="ml-auto text-[#7a5c14] font-semibold text-sm">
                       £{booking.quoted_price.toFixed(0)}
                     </span>

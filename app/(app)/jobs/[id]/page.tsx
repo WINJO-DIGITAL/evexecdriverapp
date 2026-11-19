@@ -146,14 +146,14 @@ function WaitTimer({ since, graceMinutes }: { since: string | null; graceMinutes
   return (
     <div className="flex items-center gap-3">
       <div>
-        <p className="text-[11px] font-semibold text-[#4f6580] mb-0.5">Waiting</p>
+        <p className="text-[11px] font-semibold text-[#535B68] mb-0.5">Waiting</p>
         <span className="text-[#7a5c14] font-mono font-bold text-sm">
           {String(elapsedMin).padStart(2, '0')}:{String(elapsedSec).padStart(2, '0')}
         </span>
       </div>
-      <div className="w-px h-7 bg-[#cad8e8]" />
+      <div className="w-px h-7 bg-[#DADDE3]" />
       <div>
-        <p className="text-[11px] font-semibold text-[#4f6580] mb-0.5">
+        <p className="text-[11px] font-semibold text-[#535B68] mb-0.5">
           {overtime ? 'Overtime' : 'Free wait'}
         </p>
         <span
@@ -249,9 +249,9 @@ function PaymentModal({
   return (
     <div className="fixed inset-0 flex flex-col justify-end" style={{ background: 'rgba(2,8,19,0.85)', zIndex: 9999 }}>
       <div className="bg-white rounded-t-3xl px-5 pt-5 pb-10">
-        <div className="w-10 h-1 rounded-full bg-[#c4d4e4] mx-auto mb-5" />
+        <div className="w-10 h-1 rounded-full bg-[#E2E5EA] mx-auto mb-5" />
         <h2 className="text-[#060C1A] font-bold text-lg mb-1">How Was Payment Made?</h2>
-        <p className="text-[#4f6580] text-xs mb-5">Confirm before completing the journey</p>
+        <p className="text-[#535B68] text-xs mb-5">Confirm before completing the journey</p>
 
         <div className="grid grid-cols-3 gap-3 mb-5">
           {(['Card', 'Cash', 'Bank Transfer'] as const).map((m) => {
@@ -266,7 +266,7 @@ function PaymentModal({
                     ? m === 'Cash'
                       ? { background: 'rgba(213,165,56,0.12)', border: '2px solid rgba(213,165,56,0.5)', color: '#7a5c14' }
                       : { background: 'rgba(16,185,129,0.12)', border: '2px solid rgba(16,185,129,0.4)', color: '#047857' }
-                    : { background: '#f0f5fa', border: '2px solid #e2eaf2', color: '#4f6580' }
+                    : { background: '#F7F8FA', border: '2px solid #E9EBEF', color: '#535B68' }
                 }
               >
                 {m === 'Card' && <CreditCard size={20} />}
@@ -281,7 +281,7 @@ function PaymentModal({
 
         {method === 'Cash' && (
           <div className="mb-5">
-            <p className="text-[#4f6580] text-xs mb-2">Cash Received</p>
+            <p className="text-[#535B68] text-xs mb-2">Cash Received</p>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7a5c14] font-bold text-sm">£</span>
               <input
@@ -292,11 +292,11 @@ function PaymentModal({
                 value={cashReceived}
                 onChange={e => setCashReceived(e.target.value)}
                 autoFocus
-                className="w-full bg-[#dce8f2] border border-[#d5a538]/30 rounded-xl pl-7 pr-3 py-3 text-[#060C1A] text-sm font-semibold focus:outline-none focus:border-[#d5a538]/60"
+                className="w-full bg-[#EEF0F3] border border-[#d5a538]/30 rounded-xl pl-7 pr-3 py-3 text-[#060C1A] text-sm font-semibold focus:outline-none focus:border-[#d5a538]/60"
               />
             </div>
             {cashReceived && parseFloat(cashReceived) > 0 && quotedPrice != null && quotedPrice > 0 && (
-              <p className="text-[#4f6580] text-xs mt-1.5 text-right">
+              <p className="text-[#535B68] text-xs mt-1.5 text-right">
                 Change: £{Math.max(0, parseFloat(cashReceived) - quotedPrice).toFixed(2)}
               </p>
             )}
@@ -316,7 +316,7 @@ function PaymentModal({
           <button
             onClick={onBack}
             disabled={loading}
-            className="flex-1 py-3.5 rounded-xl text-sm font-semibold text-[#4f6580] border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70 disabled:opacity-40"
+            className="flex-1 py-3.5 rounded-xl text-sm font-semibold text-[#535B68] border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70 disabled:opacity-40"
           >
             Back
           </button>
@@ -770,7 +770,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#eaeff7] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center">
         <div className="w-8 h-8 rounded-full border-2 border-[#d5a538] border-t-transparent animate-spin" />
       </div>
     )
@@ -778,8 +778,8 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
   if (!booking) {
     return (
-      <div className="min-h-screen bg-[#eaeff7] flex items-center justify-center">
-        <p className="text-[#4f6580]">Booking not found</p>
+      <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center">
+        <p className="text-[#535B68]">Booking not found</p>
       </div>
     )
   }
@@ -848,15 +848,15 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
   return (
     <>
-      <div className="min-h-screen bg-[#eaeff7] pb-8">
+      <div className="min-h-screen bg-[#F4F5F7] pb-8">
 
         {/* Header */}
-        <div className="px-4 pt-12 pb-4 flex items-center gap-3 border-b border-[#d8e6f0]">
+        <div className="px-4 pt-12 pb-4 flex items-center gap-3 border-b border-[#ECEEF2]">
           <button
             onClick={() => router.back()}
-            className="w-9 h-9 rounded-xl bg-[#dce8f2] flex items-center justify-center active:opacity-70"
+            className="w-9 h-9 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70"
           >
-            <ArrowLeft size={18} className="text-[#2d4c6d]" />
+            <ArrowLeft size={18} className="text-[#262C35]" />
           </button>
           <div className="flex-1">
             <h1 className="text-[#060C1A] font-semibold text-base">{bookingRef}</h1>
@@ -889,19 +889,19 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <div className="flex-1 min-w-0">
                     {isEnRoute && (
                       <>
-                        <p className="text-xs font-semibold text-[#4f6580] mb-0.5">En Route to Pickup</p>
+                        <p className="text-xs font-semibold text-[#535B68] mb-0.5">En Route to Pickup</p>
                         <p className="text-[#060C1A] text-sm font-medium leading-snug truncate">{pickupAddress}</p>
                       </>
                     )}
                     {isArrived && (
                       <>
-                        <p className="text-xs font-semibold text-[#4f6580] mb-1">Arrived — Waiting</p>
+                        <p className="text-xs font-semibold text-[#535B68] mb-1">Arrived — Waiting</p>
                         <WaitTimer since={booking.arrived_at} graceMinutes={graceMinutes} />
                       </>
                     )}
                     {isPob && (
                       <>
-                        <p className="text-xs font-semibold text-[#4f6580] mb-0.5">Passenger On Board</p>
+                        <p className="text-xs font-semibold text-[#535B68] mb-0.5">Passenger On Board</p>
                         <p className="text-[#060C1A] text-sm font-medium leading-snug truncate">{dropoffAddress}</p>
                       </>
                     )}
@@ -925,7 +925,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   {booking.quoted_price != null && booking.quoted_price > 0 && (
                     <p className="text-green-800 text-sm mt-1">£{booking.quoted_price.toFixed(2)}</p>
                   )}
-                  <Link href={`/jobs/${booking.id}/receipt`} className="inline-flex items-center gap-1.5 mt-3 px-4 py-2 rounded-xl bg-[#dce8f2] border border-[#c4d4e4] text-[#3b5470] text-sm font-medium hover:bg-[#dce8f2] transition-colors">
+                  <Link href={`/jobs/${booking.id}/receipt`} className="inline-flex items-center gap-1.5 mt-3 px-4 py-2 rounded-xl bg-[#EEF0F3] border border-[#E2E5EA] text-[#3A414C] text-sm font-medium hover:bg-[#EEF0F3] transition-colors">
                     <FileText size={14} />
                     View Receipt
                   </Link>
@@ -943,7 +943,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               {/* 5-second undo after POB */}
               {pobUndoActive && (
                 <div className="flex items-center justify-between bg-[#d5a538]/10 border border-[#d5a538]/25 rounded-xl px-4 py-3">
-                  <span className="text-[#3b5470] text-sm">Passenger On Board set</span>
+                  <span className="text-[#3A414C] text-sm">Passenger On Board set</span>
                   <button
                     onClick={handleUndoPob}
                     className="text-[#7a5c14] text-sm font-bold flex items-center gap-2"
@@ -975,9 +975,9 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       variant={nextStep.to === 'Completed' ? 'green' : 'gold'}
                     />
                   ) : (
-                    <div className="w-full h-16 rounded-2xl bg-[#f0f5fa] border border-[#c4d4e4] flex items-center justify-center gap-2">
-                      <Clock size={14} className="text-[#4f6580]" />
-                      <span className="text-[#4f6580] text-sm font-semibold">Available 24 h before pickup</span>
+                    <div className="w-full h-16 rounded-2xl bg-[#F7F8FA] border border-[#E2E5EA] flex items-center justify-center gap-2">
+                      <Clock size={14} className="text-[#535B68]" />
+                      <span className="text-[#535B68] text-sm font-semibold">Available 24 h before pickup</span>
                     </div>
                   )}
                 </>
@@ -996,9 +996,9 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     <a
                       href={pendingSms.href}
                       aria-label="Open the text again"
-                      className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                     >
-                      <RefreshCw size={16} className="text-[#4f6580]" />
+                      <RefreshCw size={16} className="text-[#535B68]" />
                     </a>
                   </div>
                 ) : (
@@ -1019,7 +1019,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <div
                     key={r.type}
                     ref={reminderFocus === r.type ? reminderRef : undefined}
-                    className={reminderFocus === r.type ? 'rounded-xl ring-2 ring-[#d5a538]/50 ring-offset-2 ring-offset-[#eaeff7]' : ''}
+                    className={reminderFocus === r.type ? 'rounded-xl ring-2 ring-[#d5a538]/50 ring-offset-2 ring-offset-[#F4F5F7]' : ''}
                   >
                     {r.state === 'ready' && (
                       <button
@@ -1040,9 +1040,9 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                           <button
                             onClick={() => sendCustomerReminder(r.type, true)}
                             aria-label="Open the reminder again"
-                            className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                            className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                           >
-                            <RefreshCw size={16} className="text-[#4f6580]" />
+                            <RefreshCw size={16} className="text-[#535B68]" />
                           </button>
                         )}
                       </div>
@@ -1054,7 +1054,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       </div>
                     )}
                     {r.state === 'closed' && (
-                      <p className="py-2 text-xs text-[#4f6580] text-center">No {reminderLabel(r.type).toLowerCase()} needed: {r.note}</p>
+                      <p className="py-2 text-xs text-[#535B68] text-center">No {reminderLabel(r.type).toLowerCase()} needed: {r.note}</p>
                     )}
                   </div>
                 )
@@ -1066,7 +1066,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <div className="flex gap-2">
                     <button
                       onClick={() => setNoShowConfirm(false)}
-                      className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-[#4f6580] border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                      className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-[#535B68] border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                     >
                       Cancel
                     </button>
@@ -1081,7 +1081,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 ) : (
                   <button
                     onClick={() => setNoShowConfirm(true)}
-                    className="w-full py-2.5 rounded-xl text-sm font-semibold text-amber-800 border border-amber-200 bg-amber-50 active:opacity-70 flex items-center justify-center gap-2"
+                    className="w-full py-2.5 rounded-xl text-sm font-medium text-[#535B68] border border-[#E2E5EA] bg-white active:opacity-70 flex items-center justify-center gap-2"
                   >
                     <UserX size={14} /> Passenger No Show
                   </button>
@@ -1092,7 +1092,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
           {/* ── Progress stepper ─────────────────────────────────────────── */}
           {showProgress && (
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl px-4 py-3.5">
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl px-4 py-3.5">
               <div className="relative flex items-start justify-between">
                 <div
                   className="absolute"
@@ -1117,7 +1117,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       >
                         {done ? <Check size={12} strokeWidth={3} /> : i + 1}
                       </div>
-                      <span className="text-[9px] text-[#4f6580] text-center leading-tight" style={{ maxWidth: 52 }}>
+                      <span className="text-[9px] text-[#535B68] text-center leading-tight" style={{ maxWidth: 52 }}>
                         {STEP_LABELS[step]}
                       </span>
                     </div>
@@ -1135,17 +1135,17 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           )}
 
           {/* ── Passenger ────────────────────────────────────────────────── */}
-          <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
-            <p className="text-xs font-semibold text-[#4f6580] mb-3">Passenger</p>
+          <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
+            <p className="text-xs font-semibold text-[#535B68] mb-3">Passenger</p>
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#dce8f2] flex items-center justify-center flex-shrink-0">
-                  <User size={18} className="text-[#4f6580]" />
+                <div className="w-10 h-10 rounded-xl bg-[#EEF0F3] flex items-center justify-center flex-shrink-0">
+                  <User size={18} className="text-[#535B68]" />
                 </div>
                 <div>
                   <p className="text-[#060C1A] font-semibold text-sm">{booking.customer_name}</p>
                   {booking.customer_email && (
-                    <p className="text-[#4f6580] text-xs mt-0.5 truncate max-w-[180px]">{booking.customer_email}</p>
+                    <p className="text-[#535B68] text-xs mt-0.5 truncate max-w-[180px]">{booking.customer_email}</p>
                   )}
                 </div>
               </div>
@@ -1156,13 +1156,13 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       const body = customerUpdateSms(booking.status, booking, smsDriver, business)
                       return body ? smsHref(booking.customer_phone, body) : `sms:${booking.customer_phone}`
                     })()}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                   >
-                    <MessageSquare size={16} className="text-[#3b5470]" />
+                    <MessageSquare size={16} className="text-[#3A414C]" />
                   </a>
                   <a
                     href={`tel:${booking.customer_phone}`}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#c4d4e4] bg-[#dce8f2] active:opacity-70"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                   >
                     <Phone size={16} className="text-[#7a5c14]" />
                   </a>
@@ -1173,8 +1173,8 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
           {/* ── Passenger preferences ────────────────────────────────────── */}
           {prefs.length > 0 && (
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl px-4 py-3.5">
-              <p className="text-xs font-semibold text-[#4f6580] mb-2.5">Passenger Preferences</p>
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl px-4 py-3.5">
+              <p className="text-xs font-semibold text-[#535B68] mb-2.5">Passenger Preferences</p>
               <div className="flex flex-wrap gap-2">
                 {prefs.map((pref) => (
                   <span
@@ -1190,8 +1190,8 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           )}
 
           {/* ── Route ────────────────────────────────────────────────────── */}
-          <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
-            <p className="text-xs font-semibold text-[#4f6580] mb-4">Route</p>
+          <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
+            <p className="text-xs font-semibold text-[#535B68] mb-4">Route</p>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="flex flex-col items-center gap-1 flex-shrink-0 mt-0.5">
@@ -1199,7 +1199,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <div className="w-px h-5 bg-[#d5a538]/20" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#4f6580] text-xs mb-0.5">
+                  <p className="text-[#535B68] text-xs mb-0.5">
                     Pickup
                     {booking.travel_time ? ` · ${formatTime(booking.travel_time)}` : ''}
                     {booking.travel_date ? ` · ${formatDate(booking.travel_date)}` : ''}
@@ -1218,7 +1218,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   <DropoffIcon size={10} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#4f6580] text-xs mb-0.5">Drop-off</p>
+                  <p className="text-[#535B68] text-xs mb-0.5">Drop-off</p>
                   <p className="text-[#060C1A] text-sm font-medium leading-snug">{dropoffAddress}</p>
                 </div>
                 <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -1246,14 +1246,14 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 </div>
               </div>
               {(booking.passengers > 0 || booking.luggage) && (
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-3 border-t border-[#d8e6f0]">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-3 border-t border-[#ECEEF2]">
                   {booking.passengers > 0 && (
-                    <span className="text-[#4f6580] text-xs flex items-center gap-1">
+                    <span className="text-[#535B68] text-xs flex items-center gap-1">
                       <Users size={11} /> {booking.passengers} Passengers
                     </span>
                   )}
                   {booking.luggage && (
-                    <span className="text-[#4f6580] text-xs flex items-center gap-1">
+                    <span className="text-[#535B68] text-xs flex items-center gap-1">
                       <Luggage size={11} /> {booking.luggage.replace(/pieces?/i, 'Bags')}
                     </span>
                   )}
@@ -1273,7 +1273,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
           {/* ── Return journey ─────────────────────────────────────────── */}
           {booking.return_journey && (
-            <div className="bg-white border border-[#c4d4e4] rounded-xl px-4 py-3 flex items-center gap-3">
+            <div className="bg-white border border-[#E2E5EA] rounded-xl px-4 py-3 flex items-center gap-3">
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(213,165,56,0.1)', border: '1px solid rgba(213,165,56,0.2)' }}
@@ -1281,33 +1281,33 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 <ArrowLeftRight size={15} className="text-[#7a5c14]" />
               </div>
               <div>
-                <p className="text-[#1e3a5f] text-xs font-semibold">Return journey included</p>
-                <p className="text-[#4f6580] text-[10px] mt-0.5">Round-trip booking</p>
+                <p className="text-[#262C35] text-xs font-semibold">Return journey included</p>
+                <p className="text-[#535B68] text-[10px] mt-0.5">Round-trip booking</p>
               </div>
             </div>
           )}
 
           {/* ── Notes ────────────────────────────────────────────────────── */}
           {showNotes && (
-            <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
-              <p className="text-xs font-semibold text-[#4f6580] mb-3 flex items-center gap-1.5">
+            <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
+              <p className="text-xs font-semibold text-[#535B68] mb-3 flex items-center gap-1.5">
                 <FileText size={11} /> Notes
               </p>
               {booking.operator_note && (
                 <div className={!isDone ? 'mb-4' : ''}>
-                  <p className="text-xs text-[#4f6580] mb-1">From operator</p>
-                  <p className="text-[#2d4c6d] text-sm leading-relaxed">{booking.operator_note}</p>
+                  <p className="text-xs text-[#535B68] mb-1">From operator</p>
+                  <p className="text-[#262C35] text-sm leading-relaxed">{booking.operator_note}</p>
                 </div>
               )}
               {!isDone && (
                 <div>
-                  <p className="text-xs text-[#4f6580] mb-1.5">Your notes</p>
+                  <p className="text-xs text-[#535B68] mb-1.5">Your notes</p>
                   <textarea
                     value={driverNote}
                     onChange={(e) => setDriverNote(e.target.value)}
                     placeholder="Add a note about this job…"
                     rows={2}
-                    className="w-full bg-[#dce8f2] border border-[#c4d4e4] rounded-xl px-3 py-2.5 text-[#1e3a5f] text-sm placeholder-[#7a9ab8] focus:outline-none focus:border-[#d5a538]/40 resize-none"
+                    className="w-full bg-[#EEF0F3] border border-[#E2E5EA] rounded-xl px-3 py-2.5 text-[#262C35] text-sm placeholder-[#636B77] focus:outline-none focus:border-[#d5a538]/40 resize-none"
                   />
                   {noteChanged && (
                     <button
@@ -1322,17 +1322,17 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               )}
               {isDone && booking.driver_notes && (
                 <div>
-                  <p className="text-xs text-[#4f6580] mb-1">Your notes</p>
-                  <p className="text-[#3b5470] text-sm leading-relaxed">{booking.driver_notes}</p>
+                  <p className="text-xs text-[#535B68] mb-1">Your notes</p>
+                  <p className="text-[#3A414C] text-sm leading-relaxed">{booking.driver_notes}</p>
                 </div>
               )}
             </div>
           )}
 
           {/* ── Photos / damage report ───────────────────────────────────── */}
-          <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4">
+          <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <p className="text-xs font-semibold text-[#4f6580] flex items-center gap-1.5">
+              <p className="text-xs font-semibold text-[#535B68] flex items-center gap-1.5">
                 <Camera size={11} /> Photos
               </p>
               {!isDone && (
@@ -1359,13 +1359,13 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               }}
             />
             {photos.length === 0 ? (
-              <p className="text-[#5a6f88] text-xs text-center py-4">
+              <p className="text-[#646C78] text-xs text-center py-4">
                 {isDone ? 'No photos recorded' : 'Tap Add Photo to capture damage or evidence'}
               </p>
             ) : (
               <div className="grid grid-cols-3 gap-2">
                 {photos.map(photo => (
-                  <div key={photo.id} className="relative aspect-square rounded-xl overflow-hidden bg-[#dce8f2]">
+                  <div key={photo.id} className="relative aspect-square rounded-xl overflow-hidden bg-[#EEF0F3]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={photo.url} alt="" className="w-full h-full object-cover" />
                     {!isDone && (

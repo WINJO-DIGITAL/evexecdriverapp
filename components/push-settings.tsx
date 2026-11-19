@@ -52,20 +52,20 @@ export function PushSettings() {
   if (!state) return null
 
   return (
-    <div className="bg-white border border-[#c4d4e4] rounded-2xl p-4 mb-4">
+    <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4 mb-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BellRing size={14} className="text-[#7a5c14]" />
-          <p className="text-[#3b5470] text-xs font-semibold">Job notifications</p>
+          <p className="text-[#3A414C] text-xs font-semibold">Job notifications</p>
         </div>
         <span className={`text-xs font-bold ${state === 'on' ? 'text-green-600' : 'text-[#b45309]'}`}>{LABEL[state]}</span>
       </div>
 
       {state === 'needs-install' && (
-        <p className="text-[#3b5470] text-sm mt-3">In Safari tap Share, then &ldquo;Add to Home Screen&rdquo;, and open {BRAND.name} from the Home Screen.</p>
+        <p className="text-[#3A414C] text-sm mt-3">In Safari tap Share, then &ldquo;Add to Home Screen&rdquo;, and open {BRAND.name} from the Home Screen.</p>
       )}
       {state === 'denied' && (
-        <p className="text-[#3b5470] text-sm mt-3">Turn them on in your phone&rsquo;s Settings › Notifications › {BRAND.name}.</p>
+        <p className="text-[#3A414C] text-sm mt-3">Turn them on in your phone&rsquo;s Settings › Notifications › {BRAND.name}.</p>
       )}
 
       {state === 'off' && (
@@ -76,11 +76,11 @@ export function PushSettings() {
       )}
       {state === 'on' && (
         <button onClick={test} disabled={busy}
-          className="mt-3 w-full py-2.5 rounded-xl border border-[#c4d4e4] text-[#1e3a5f] text-sm font-semibold active:bg-[#dce8f2] disabled:opacity-60">
+          className="mt-3 w-full py-2.5 rounded-xl border border-[#E2E5EA] text-[#262C35] text-sm font-semibold active:bg-[#EEF0F3] disabled:opacity-60">
           {busy ? 'Sending…' : 'Send test notification'}
         </button>
       )}
-      {message && <p className="text-[#3b5470] text-xs mt-2">{message}</p>}
+      {message && <p className="text-[#3A414C] text-xs mt-2">{message}</p>}
     </div>
   )
 }

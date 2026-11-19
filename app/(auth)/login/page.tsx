@@ -50,12 +50,12 @@ export default function LoginPage() {
       </div>
 
       {/* Card */}
-      <div className="w-full max-w-sm bg-white border border-[#c4d4e4] rounded-2xl p-6 shadow-2xl">
+      <div className="w-full max-w-sm bg-white border border-[#E2E5EA] rounded-2xl p-6 shadow-2xl">
         <h2 className="text-lg font-semibold text-[#060C1A] mb-6">Sign In</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#4f6580] mb-2">
+            <label className="block text-xs font-semibold text-[#535B68] mb-2">
               Email
             </label>
             <input
@@ -63,12 +63,12 @@ export default function LoginPage() {
               name="email"
               required
               placeholder={brand ? 'you@example.com' : BRAND.loginPlaceholder}
-              className="w-full bg-[#dce8f2] border border-[#c4d4e4] rounded-xl px-4 py-3 text-[#060C1A] placeholder-[#7a9ab8] text-sm focus:outline-none focus:border-[#d5a538] focus:ring-1 focus:ring-[#d5a538] transition-colors"
+              className="w-full bg-[#EEF0F3] border border-[#E2E5EA] rounded-xl px-4 py-3 text-[#060C1A] placeholder-[#636B77] text-sm focus:outline-none focus:border-[#d5a538] focus:ring-1 focus:ring-[#d5a538] transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#4f6580] mb-2">
+            <label className="block text-xs font-semibold text-[#535B68] mb-2">
               Password
             </label>
             <div className="relative">
@@ -77,12 +77,12 @@ export default function LoginPage() {
                 name="password"
                 required
                 placeholder="••••••••"
-                className="w-full bg-[#dce8f2] border border-[#c4d4e4] rounded-xl px-4 py-3 pr-12 text-[#060C1A] placeholder-[#7a9ab8] text-sm focus:outline-none focus:border-[#d5a538] focus:ring-1 focus:ring-[#d5a538] transition-colors"
+                className="w-full bg-[#EEF0F3] border border-[#E2E5EA] rounded-xl px-4 py-3 pr-12 text-[#060C1A] placeholder-[#636B77] text-sm focus:outline-none focus:border-[#d5a538] focus:ring-1 focus:ring-[#d5a538] transition-colors"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4f6580] hover:text-[#3b5470] transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#535B68] hover:text-[#3A414C] transition-colors"
                 tabIndex={-1}
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -112,7 +112,7 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="text-center text-xs text-[#5a6f88] mt-6">
+        <p className="text-center text-xs text-[#646C78] mt-6">
           Account access is managed by {brand?.name || BRAND.name}
         </p>
       </div>

@@ -14,7 +14,7 @@ export function paymentInfo(method: string | null | undefined, status: string | 
   // collected by the driver (same rule as the website's driver emails).
   if (m.includes('card') || m.includes('stripe') || m.includes('link') || m.includes('bank')) return { text: 'Paid to Office', className: 'bg-blue-100 text-blue-800' }
   if (m.includes('account')) return { text: 'On Account', className: 'bg-purple-100 text-purple-800' }
-  if (method) return { text: method, className: 'bg-[#dce8f2] text-[#4f6580]' }
+  if (method) return { text: method, className: 'bg-[#EEF0F3] text-[#535B68]' }
   return { text: 'Cash/Card TBC', className: 'bg-amber-100 text-amber-800' }
 }
 

@@ -17,7 +17,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   return (
     <BusinessProvider business={business}>
     <ToastProvider>
-      <div className="min-h-screen bg-[#eaeff7] pb-24">
+      <div className="min-h-screen bg-[#F4F5F7] pb-24">
         <PushPrompt />
         {children}
         <BottomNav />
