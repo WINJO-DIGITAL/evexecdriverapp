@@ -59,3 +59,9 @@ body {
 .toast-enter {
   animation: toast-enter 0.2s ease-out;
 }
+
+/* Icons: one finer line weight everywhere (lucide's default is 2). Icons given
+   their own weight on purpose (e.g. the bold + button) keep it. */
+svg.lucide[stroke-width="2"] {
+  stroke-width: 1.75;
+}

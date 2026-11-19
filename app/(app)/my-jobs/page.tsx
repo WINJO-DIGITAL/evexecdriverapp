@@ -69,7 +69,7 @@ export default function MyJobsPage() {
         </div>
       ) : bookings.length === 0 ? (
         <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
-          <Car size={32} className="mx-auto mb-3 text-[#646C78]" />
+          <Car size={32} className="mx-auto mb-3 text-[#A07D32]" />
           <p className="text-[#535B68] text-sm">No active jobs right now</p>
           <p className="text-[#646C78] text-xs mt-1">Jobs appear here once you start them</p>
         </div>
@@ -110,7 +110,7 @@ export default function MyJobsPage() {
                         href={`tel:${booking.customer_phone}`}
                         className="w-9 h-9 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                       >
-                        <Phone size={15} className="text-[#7a5c14]" />
+                        <Phone size={15} className="text-[#A07D32]" />
                       </a>
                     )}
                   </div>
@@ -121,10 +121,10 @@ export default function MyJobsPage() {
                       {(booking.flight_number || (booking.journey_type ?? '').toLowerCase().includes('airport') || booking.airport) ? (
                         <PlaneLanding size={11} className="flex-shrink-0 text-[#047857]" />
                       ) : (
-                        <MapPin size={11} className="flex-shrink-0 text-[#7a5c14]" />
+                        <MapPin size={11} className="flex-shrink-0 text-[#A07D32]" />
                       )}
                       <div className="w-px flex-1 min-h-[12px] bg-[#DADDE3] my-[3px]" />
-                      <Flag size={11} className="flex-shrink-0 text-[#535B68]" />
+                      <Flag size={11} className="flex-shrink-0 text-[#A07D32]" />
                     </div>
                     {/* Addresses with nav buttons */}
                     <div className="flex-1 min-w-0 space-y-[7px]">

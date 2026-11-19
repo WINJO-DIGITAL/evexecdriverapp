@@ -21,15 +21,15 @@ export function PickupIcon({
   size?: number
 }) {
   return isAirportBooking(booking) ? (
-    <PlaneLanding size={size} className="flex-shrink-0 text-[#047857]" />
+    <PlaneLanding size={size} className="flex-shrink-0 text-[#A07D32]" />
   ) : (
-    <MapPin size={size} className="flex-shrink-0 text-[#7a5c14]" />
+    <MapPin size={size} className="flex-shrink-0 text-[#A07D32]" />
   )
 }
 
 /** Dropoff icon — flag marker for destination */
 export function DropoffIcon({ size = 12 }: { size?: number }) {
-  return <Flag size={size} className="flex-shrink-0 text-[#535B68]" />
+  return <Flag size={size} className="flex-shrink-0 text-[#A07D32]" />
 }
 
 /**
@@ -57,14 +57,14 @@ export function RouteDisplay({
       {/* Left: vertical timeline icons */}
       <div className="flex flex-col items-center flex-shrink-0 pt-[1px]">
         {airport ? (
-          <PlaneLanding size={10} className="flex-shrink-0 text-[#047857]" />
+          <PlaneLanding size={10} className="flex-shrink-0 text-[#A07D32]" />
         ) : (
-          <MapPin size={10} className="flex-shrink-0 text-[#7a5c14]" />
+          <MapPin size={10} className="flex-shrink-0 text-[#A07D32]" />
         )}
         {dropoff && (
           <>
             <div className="w-px flex-1 min-h-[10px] bg-[#DADDE3] my-[2px]" />
-            <Flag size={10} className="flex-shrink-0 text-[#535B68]" />
+            <Flag size={10} className="flex-shrink-0 text-[#A07D32]" />
           </>
         )}
       </div>

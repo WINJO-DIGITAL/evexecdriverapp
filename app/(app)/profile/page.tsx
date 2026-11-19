@@ -50,7 +50,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center">
-        <Loader2 className="animate-spin text-[#7a5c14]" size={28} />
+        <Loader2 className="animate-spin text-[#A07D32]" size={28} />
       </div>
     )
   }
@@ -78,13 +78,13 @@ export default function ProfilePage() {
         <div className="mt-4 pt-4 border-t border-[#ECEEF2] space-y-2">
           {email && (
             <div className="flex items-center gap-2 text-[#3A414C] text-sm">
-              <Mail size={14} className="text-[#535B68]" />
+              <Mail size={14} className="text-[#A07D32]" />
               {email}
             </div>
           )}
           {driver?.phone && (
             <div className="flex items-center gap-2 text-[#3A414C] text-sm">
-              <Phone size={14} className="text-[#535B68]" />
+              <Phone size={14} className="text-[#A07D32]" />
               {driver.phone}
             </div>
           )}
@@ -96,7 +96,7 @@ export default function ProfilePage() {
       {(driver?.vehicle_model || driver?.vehicle_registration) && (
         <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4 mb-4">
           <div className="flex items-center gap-2 mb-3">
-            <Car size={14} className="text-[#7a5c14]" />
+            <Car size={14} className="text-[#A07D32]" />
             <p className="text-[#3A414C] text-xs font-semibold">Vehicle</p>
           </div>
           <div className="grid grid-cols-2 gap-y-3">
@@ -125,10 +125,10 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#ECEEF2] active:bg-[#EEF0F3]"
         >
           <div className="flex items-center gap-3">
-            <PoundSterling size={16} className="text-[#535B68]" />
+            <PoundSterling size={16} className="text-[#A07D32]" />
             <span className="text-[#262C35] text-sm">Earnings</span>
           </div>
-          <ChevronRight size={15} className="text-[#646C78]" />
+          <ChevronRight size={15} className="text-[#A07D32]" />
         </button>
 
         <button
@@ -136,12 +136,12 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#ECEEF2] active:bg-[#EEF0F3]"
         >
           <div className="flex items-center gap-3">
-            <ClipboardList size={16} className="text-[#535B68]" />
+            <ClipboardList size={16} className="text-[#A07D32]" />
             <span className="text-[#262C35] text-sm">Trip History</span>
           </div>
           <div className="flex items-center gap-2">
             {tripCount > 0 && <span className="text-[#535B68] text-xs">{tripCount} trips</span>}
-            <ChevronRight size={15} className="text-[#646C78]" />
+            <ChevronRight size={15} className="text-[#A07D32]" />
           </div>
         </button>
 
@@ -150,10 +150,10 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#ECEEF2] active:bg-[#EEF0F3]"
         >
           <div className="flex items-center gap-3">
-            <Bell size={16} className="text-[#535B68]" />
+            <Bell size={16} className="text-[#A07D32]" />
             <span className="text-[#262C35] text-sm">Notifications</span>
           </div>
-          <ChevronRight size={15} className="text-[#646C78]" />
+          <ChevronRight size={15} className="text-[#A07D32]" />
         </button>
 
         {business.phone && <a
@@ -161,7 +161,7 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 border-b border-[#ECEEF2] active:bg-[#EEF0F3]"
         >
           <div className="flex items-center gap-3">
-            <Phone size={16} className="text-[#7a5c14]" />
+            <Phone size={16} className="text-[#A07D32]" />
             <span className="text-[#262C35] text-sm">Call Operations</span>
           </div>
           <span className="text-[#535B68] text-xs">{business.name} Dispatch</span>
@@ -177,7 +177,7 @@ export default function ProfilePage() {
             <MessageCircle size={16} className="text-green-800" />
             <span className="text-[#262C35] text-sm">WhatsApp Dispatch</span>
           </div>
-          <ChevronRight size={15} className="text-[#646C78]" />
+          <ChevronRight size={15} className="text-[#A07D32]" />
         </a>}
 
         <a
@@ -185,10 +185,10 @@ export default function ProfilePage() {
           className="w-full flex items-center justify-between px-4 py-3.5 active:bg-[#EEF0F3]"
         >
           <div className="flex items-center gap-3">
-            <HelpCircle size={16} className="text-[#535B68]" />
+            <HelpCircle size={16} className="text-[#A07D32]" />
             <span className="text-[#262C35] text-sm">Help &amp; Support</span>
           </div>
-          <ChevronRight size={15} className="text-[#646C78]" />
+          <ChevronRight size={15} className="text-[#A07D32]" />
         </a>
       </div>
 

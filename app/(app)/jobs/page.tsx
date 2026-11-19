@@ -33,7 +33,7 @@ function BookingCard({ booking }: { booking: Booking }) {
           </div>
           <div className="flex items-center gap-2">
             <BookingStatusBadge status={booking.status} />
-            <ChevronRight size={14} className="text-[#535B68]" />
+            <ChevronRight size={14} className="text-[#A07D32]" />
           </div>
         </div>
 
@@ -53,7 +53,7 @@ function BookingCard({ booking }: { booking: Booking }) {
           <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[#ECEEF2]">
             {booking.passengers > 0 && (
               <span className="text-[#535B68] text-xs flex items-center gap-1">
-                <Users size={11} /> {booking.passengers}
+                <Users size={11} className="text-[#A07D32]" /> {booking.passengers}
               </span>
             )}
             {(() => {
@@ -198,7 +198,7 @@ export default function JobsPage() {
 
       {/* Search */}
       <div className="relative mb-4">
-        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#535B68] pointer-events-none" />
+        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A07D32] pointer-events-none" />
         <input
           type="text"
           placeholder="Search by name or reference"

@@ -32,24 +32,24 @@ interface StatusMeta {
 }
 
 const STATUS_META: Record<BookingStatus, StatusMeta> = {
-  pending:              { label: 'Awaiting confirmation', Icon: Clock,        iconColor: '#f59e0b', bgColor: 'rgba(245,158,11,0.12)' },
-  accepted:             { label: 'Job confirmed',         Icon: UserCheck,    iconColor: '#60a5fa', bgColor: 'rgba(96,165,250,0.12)' },
-  confirmed:            { label: 'Job confirmed',         Icon: UserCheck,    iconColor: '#60a5fa', bgColor: 'rgba(96,165,250,0.12)' },
-  Dispatched:           { label: 'Job dispatched',        Icon: Navigation,   iconColor: '#a78bfa', bgColor: 'rgba(167,139,250,0.12)' },
-  en_route:             { label: 'Journey started',       Icon: Car,          iconColor: '#a78bfa', bgColor: 'rgba(167,139,250,0.12)' },
-  'En Route':           { label: 'Journey started',       Icon: Car,          iconColor: '#a78bfa', bgColor: 'rgba(167,139,250,0.12)' },
-  arrived:              { label: 'Arrived at pickup',     Icon: MapPin,       iconColor: '#22d3ee', bgColor: 'rgba(34,211,238,0.12)' },
-  Arrived:              { label: 'Arrived at pickup',     Icon: MapPin,       iconColor: '#22d3ee', bgColor: 'rgba(34,211,238,0.12)' },
-  active:               { label: 'Passenger on board',   Icon: Users,        iconColor: '#10b981', bgColor: 'rgba(16,185,129,0.12)' },
-  Active:               { label: 'Passenger on board',   Icon: Users,        iconColor: '#10b981', bgColor: 'rgba(16,185,129,0.12)' },
-  'Passenger On Board': { label: 'Passenger on board',   Icon: Users,        iconColor: '#10b981', bgColor: 'rgba(16,185,129,0.12)' },
-  completed:            { label: 'Job completed',         Icon: CheckCircle2, iconColor: 'rgba(255,255,255,0.4)', bgColor: 'rgba(255,255,255,0.06)' },
-  Completed:            { label: 'Job completed',         Icon: CheckCircle2, iconColor: 'rgba(255,255,255,0.4)', bgColor: 'rgba(255,255,255,0.06)' },
-  rejected:             { label: 'Job rejected',          Icon: XCircle,      iconColor: '#f87171', bgColor: 'rgba(248,113,113,0.12)' },
-  cancelled:            { label: 'Job cancelled',         Icon: XCircle,      iconColor: '#f87171', bgColor: 'rgba(248,113,113,0.12)' },
-  Cancelled:            { label: 'Job cancelled',         Icon: XCircle,      iconColor: '#f87171', bgColor: 'rgba(248,113,113,0.12)' },
-  'No Show':            { label: 'No show',               Icon: AlertCircle,  iconColor: '#f59e0b', bgColor: 'rgba(245,158,11,0.12)' },
-  CRITICAL_UNALLOCATED: { label: 'Needs driver — urgent', Icon: AlertCircle,  iconColor: '#f87171', bgColor: 'rgba(248,113,113,0.15)' },
+  pending:              { label: 'Awaiting confirmation', Icon: Clock,        iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  accepted:             { label: 'Job confirmed',         Icon: UserCheck,    iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  confirmed:            { label: 'Job confirmed',         Icon: UserCheck,    iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  Dispatched:           { label: 'Job dispatched',        Icon: Navigation,   iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  en_route:             { label: 'Journey started',       Icon: Car,          iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  'En Route':           { label: 'Journey started',       Icon: Car,          iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  arrived:              { label: 'Arrived at pickup',     Icon: MapPin,       iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  Arrived:              { label: 'Arrived at pickup',     Icon: MapPin,       iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  active:               { label: 'Passenger on board',   Icon: Users,        iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  Active:               { label: 'Passenger on board',   Icon: Users,        iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  'Passenger On Board': { label: 'Passenger on board',   Icon: Users,        iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  completed:            { label: 'Job completed',         Icon: CheckCircle2, iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  Completed:            { label: 'Job completed',         Icon: CheckCircle2, iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  rejected:             { label: 'Job rejected',          Icon: XCircle,      iconColor: '#B91C1C', bgColor: 'rgba(185,28,28,0.08)' },
+  cancelled:            { label: 'Job cancelled',         Icon: XCircle,      iconColor: '#B91C1C', bgColor: 'rgba(185,28,28,0.08)' },
+  Cancelled:            { label: 'Job cancelled',         Icon: XCircle,      iconColor: '#B91C1C', bgColor: 'rgba(185,28,28,0.08)' },
+  'No Show':            { label: 'No show',               Icon: AlertCircle,  iconColor: '#A07D32', bgColor: 'rgba(160,125,50,0.10)' },
+  CRITICAL_UNALLOCATED: { label: 'Needs driver — urgent', Icon: AlertCircle,  iconColor: '#B91C1C', bgColor: 'rgba(185,28,28,0.08)' },
 }
 
 export default function NotificationsPage() {
@@ -115,7 +115,7 @@ export default function NotificationsPage() {
         </div>
       ) : visible.length === 0 ? (
         <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
-          <Bell size={32} className="mx-auto mb-3 text-[#646C78]" />
+          <Bell size={32} className="mx-auto mb-3 text-[#A07D32]" />
           <p className="text-[#535B68] text-sm">{bookings.length ? 'All caught up' : 'No activity yet'}</p>
           <p className="text-[#646C78] text-xs mt-1">{bookings.length ? 'New job activity will appear here' : 'Your job history will appear here'}</p>
         </div>
@@ -147,7 +147,7 @@ export default function NotificationsPage() {
                         </div>
                         <div className="flex items-center gap-1.5 flex-shrink-0">
                           <span className="text-[#535B68] text-[10px]">{timeAgo(booking.updated_at)}</span>
-                          <ChevronRight size={13} className="text-[#535B68]" />
+                          <ChevronRight size={13} className="text-[#A07D32]" />
                         </div>
                       </div>
 

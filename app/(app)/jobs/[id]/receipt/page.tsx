@@ -130,7 +130,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
                 href={emailHref}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white border border-[#E2E5EA] text-[#262C35] text-sm font-medium active:opacity-70"
               >
-                <Mail size={14} className="text-[#7a5c14]" />
+                <Mail size={14} className="text-[#A07D32]" />
                 Send via Email
               </a>
             )}

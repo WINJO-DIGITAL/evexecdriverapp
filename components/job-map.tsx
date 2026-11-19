@@ -139,12 +139,12 @@ export function JobMap({ pickup, dropoff }: Props) {
         <div className="flex items-center gap-4 px-4 py-3 border-t border-[#ECEEF2]">
           {eta && (
             <span className="flex items-center gap-1.5 text-[#3A414C] text-xs">
-              <Clock size={11} className="text-[#7a5c14]" /> {eta}
+              <Clock size={11} className="text-[#A07D32]" /> {eta}
             </span>
           )}
           {dist && (
             <span className="flex items-center gap-1.5 text-[#3A414C] text-xs">
-              <Route size={11} className="text-[#7a5c14]" /> {dist}
+              <Route size={11} className="text-[#A07D32]" /> {dist}
             </span>
           )}
           <a

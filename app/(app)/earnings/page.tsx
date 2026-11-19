@@ -212,7 +212,7 @@ function EarningsContent() {
               {PERIOD_LABELS[period]} Earnings
             </p>
             <div className="flex items-end gap-1">
-              <PoundSterling size={24} className="text-[#7a5c14] mb-1" />
+              <PoundSterling size={24} className="text-[#A07D32] mb-1" />
               <span className="text-[#060C1A] font-bold text-4xl">
                 {periodTotal.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
               </span>
@@ -222,12 +222,12 @@ function EarningsContent() {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-3 mb-4">
             <div className="bg-white border border-[#E2E5EA] rounded-xl p-3 text-center">
-              <Briefcase size={16} className="mx-auto mb-1 text-[#7a5c14]" />
+              <Briefcase size={16} className="mx-auto mb-1 text-[#A07D32]" />
               <p className="text-[#060C1A] font-bold text-lg">{periodTrips}</p>
               <p className="text-[#535B68] text-xs">Jobs</p>
             </div>
             <div className="bg-white border border-[#E2E5EA] rounded-xl p-3 text-center">
-              <TrendingUp size={16} className="mx-auto mb-1 text-[#7a5c14]" />
+              <TrendingUp size={16} className="mx-auto mb-1 text-[#A07D32]" />
               <p className="text-[#060C1A] font-bold text-lg">£{perJob.toFixed(0)}</p>
               <p className="text-[#535B68] text-xs">Per Job avg</p>
             </div>
@@ -262,7 +262,7 @@ function EarningsContent() {
                 {onTimeRate !== null && (
                   <div>
                     <div className="flex items-center gap-1.5 mb-1.5">
-                      <Clock size={13} className="text-[#7a5c14]" />
+                      <Clock size={13} className="text-[#A07D32]" />
                       <p className="text-[#535B68] text-xs">On Time</p>
                     </div>
                     <p className={`text-2xl font-bold ${onTimeRate >= 90 ? 'text-[#047857]' : onTimeRate >= 75 ? 'text-amber-800' : 'text-red-800'}`}>
@@ -287,7 +287,7 @@ function EarningsContent() {
           {/* Jobs list */}
           {periodBookings.length === 0 ? (
             <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
-              <PoundSterling size={28} className="mx-auto mb-3 text-[#646C78]" />
+              <PoundSterling size={28} className="mx-auto mb-3 text-[#A07D32]" />
               <p className="text-[#535B68] text-sm">
                 No completed jobs {period === 'today' ? 'today' : `this ${period}`}
               </p>
@@ -335,14 +335,14 @@ function EarningsContent() {
               onClick={prevMonth}
               className="w-9 h-9 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70"
             >
-              <ChevronLeft size={18} className="text-[#3A414C]" />
+              <ChevronLeft size={18} className="text-[#A07D32]" />
             </button>
             <span className="text-[#060C1A] font-semibold text-base">{MONTHS[month]} {year}</span>
             <button
               onClick={nextMonth}
               className="w-9 h-9 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70"
             >
-              <ChevronRight size={18} className="text-[#3A414C]" />
+              <ChevronRight size={18} className="text-[#A07D32]" />
             </button>
           </div>
 
@@ -418,7 +418,7 @@ function EarningsContent() {
           {/* Job list */}
           {monthBookings.length === 0 ? (
             <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
-              <ClipboardList size={32} className="mx-auto mb-3 text-[#646C78]" />
+              <ClipboardList size={32} className="mx-auto mb-3 text-[#A07D32]" />
               <p className="text-[#535B68] text-sm">No completed trips in {MONTHS[month]}</p>
             </div>
           ) : (

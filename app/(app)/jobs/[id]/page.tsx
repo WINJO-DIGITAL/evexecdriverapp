@@ -856,7 +856,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
             onClick={() => router.back()}
             className="w-9 h-9 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70"
           >
-            <ArrowLeft size={18} className="text-[#262C35]" />
+            <ArrowLeft size={18} className="text-[#A07D32]" />
           </button>
           <div className="flex-1">
             <h1 className="text-[#060C1A] font-semibold text-base">{bookingRef}</h1>
@@ -882,9 +882,9 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{ background: 'rgba(213,165,56,0.12)', border: '1px solid rgba(213,165,56,0.2)' }}
                   >
-                    {isEnRoute && <Navigation2 size={18} className="text-[#7a5c14]" />}
-                    {isArrived  && <MapPin size={18} className="text-[#7a5c14]" />}
-                    {isPob      && <Car size={18} className="text-[#7a5c14]" />}
+                    {isEnRoute && <Navigation2 size={18} className="text-[#A07D32]" />}
+                    {isArrived  && <MapPin size={18} className="text-[#A07D32]" />}
+                    {isPob      && <Car size={18} className="text-[#A07D32]" />}
                   </div>
                   <div className="flex-1 min-w-0">
                     {isEnRoute && (
@@ -911,7 +911,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       onClick={() => openMaps(isActive ? dropoffAddress : pickupAddress)}
                       className="flex items-center gap-1.5 text-[#7a5c14] text-xs font-semibold flex-shrink-0 bg-[#d5a538]/10 px-3 py-2 rounded-xl active:opacity-70"
                     >
-                      <Navigation2 size={12} /> Go
+                      <Navigation2 size={12} className="text-[#A07D32]" /> Go
                     </button>
                   )}
                 </div>
@@ -926,7 +926,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     <p className="text-green-800 text-sm mt-1">£{booking.quoted_price.toFixed(2)}</p>
                   )}
                   <Link href={`/jobs/${booking.id}/receipt`} className="inline-flex items-center gap-1.5 mt-3 px-4 py-2 rounded-xl bg-[#EEF0F3] border border-[#E2E5EA] text-[#3A414C] text-sm font-medium hover:bg-[#EEF0F3] transition-colors">
-                    <FileText size={14} />
+                    <FileText size={14} className="text-[#A07D32]" />
                     View Receipt
                   </Link>
                 </div>
@@ -935,7 +935,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               {/* No Show */}
               {isNoShow && !isCompleted && (
                 <div className="text-center py-2">
-                  <UserX size={32} className="mx-auto mb-2 text-amber-800" />
+                  <UserX size={32} className="mx-auto mb-2 text-[#A07D32]" />
                   <p className="text-amber-800 font-bold">Passenger No Show</p>
                 </div>
               )}
@@ -976,7 +976,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     />
                   ) : (
                     <div className="w-full h-16 rounded-2xl bg-[#F7F8FA] border border-[#E2E5EA] flex items-center justify-center gap-2">
-                      <Clock size={14} className="text-[#535B68]" />
+                      <Clock size={14} className="text-[#A07D32]" />
                       <span className="text-[#535B68] text-sm font-semibold">Available 24 h before pickup</span>
                     </div>
                   )}
@@ -998,7 +998,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                       aria-label="Open the text again"
                       className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                     >
-                      <RefreshCw size={16} className="text-[#535B68]" />
+                      <RefreshCw size={16} className="text-[#A07D32]" />
                     </a>
                   </div>
                 ) : (
@@ -1007,7 +1007,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     onClick={() => setPendingSms(p => (p ? { ...p, sent: true } : p))}
                     className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-[#060C1A] bg-white border border-[#d5a538]/40 active:opacity-70"
                   >
-                    <MessageSquare size={15} className="text-[#7a5c14]" />
+                    <MessageSquare size={15} className="text-[#A07D32]" />
                     {pendingSms.label}
                   </a>
                 )
@@ -1026,7 +1026,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                         onClick={() => sendCustomerReminder(r.type)}
                         className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-[#060C1A] bg-white border border-[#d5a538]/40 active:opacity-70"
                       >
-                        <MessageSquare size={15} className="text-[#7a5c14]" />
+                        <MessageSquare size={15} className="text-[#A07D32]" />
                         Send {reminderLabel(r.type)}
                       </button>
                     )}
@@ -1042,7 +1042,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                             aria-label="Open the reminder again"
                             className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                           >
-                            <RefreshCw size={16} className="text-[#535B68]" />
+                            <RefreshCw size={16} className="text-[#A07D32]" />
                           </button>
                         )}
                       </div>
@@ -1083,7 +1083,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     onClick={() => setNoShowConfirm(true)}
                     className="w-full py-2.5 rounded-xl text-sm font-medium text-[#535B68] border border-[#E2E5EA] bg-white active:opacity-70 flex items-center justify-center gap-2"
                   >
-                    <UserX size={14} /> Passenger No Show
+                    <UserX size={14} className="text-[#A07D32]" /> Passenger No Show
                   </button>
                 )
               )}
@@ -1140,7 +1140,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#EEF0F3] flex items-center justify-center flex-shrink-0">
-                  <User size={18} className="text-[#535B68]" />
+                  <User size={18} className="text-[#A07D32]" />
                 </div>
                 <div>
                   <p className="text-[#060C1A] font-semibold text-sm">{booking.customer_name}</p>
@@ -1158,13 +1158,13 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     })()}
                     className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                   >
-                    <MessageSquare size={16} className="text-[#3A414C]" />
+                    <MessageSquare size={16} className="text-[#A07D32]" />
                   </a>
                   <a
                     href={`tel:${booking.customer_phone}`}
                     className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                   >
-                    <Phone size={16} className="text-[#7a5c14]" />
+                    <Phone size={16} className="text-[#A07D32]" />
                   </a>
                 </div>
               )}
@@ -1210,7 +1210,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   onClick={() => openMaps(pickupAddress)}
                   className="flex items-center gap-1.5 text-[#7a5c14] text-xs font-semibold flex-shrink-0 bg-[#d5a538]/10 px-3 py-2 rounded-xl active:opacity-70"
                 >
-                  <Navigation2 size={12} /> Go
+                  <Navigation2 size={12} className="text-[#A07D32]" /> Go
                 </button>
               </div>
               <div className="flex items-start gap-3">
@@ -1241,7 +1241,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     onClick={() => openMaps(dropoffAddress, pickupAddress)}
                     className="flex items-center gap-1.5 text-[#7a5c14] text-xs font-semibold bg-[#d5a538]/10 px-3 py-2 rounded-xl active:opacity-70"
                   >
-                    <Navigation2 size={12} /> Go
+                    <Navigation2 size={12} className="text-[#A07D32]" /> Go
                   </button>
                 </div>
               </div>
@@ -1249,12 +1249,12 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-3 border-t border-[#ECEEF2]">
                   {booking.passengers > 0 && (
                     <span className="text-[#535B68] text-xs flex items-center gap-1">
-                      <Users size={11} /> {booking.passengers} Passengers
+                      <Users size={11} className="text-[#A07D32]" /> {booking.passengers} Passengers
                     </span>
                   )}
                   {booking.luggage && (
                     <span className="text-[#535B68] text-xs flex items-center gap-1">
-                      <Luggage size={11} /> {booking.luggage.replace(/pieces?/i, 'Bags')}
+                      <Luggage size={11} className="text-[#A07D32]" /> {booking.luggage.replace(/pieces?/i, 'Bags')}
                     </span>
                   )}
                 </div>
@@ -1278,7 +1278,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(213,165,56,0.1)', border: '1px solid rgba(213,165,56,0.2)' }}
               >
-                <ArrowLeftRight size={15} className="text-[#7a5c14]" />
+                <ArrowLeftRight size={15} className="text-[#A07D32]" />
               </div>
               <div>
                 <p className="text-[#262C35] text-xs font-semibold">Return journey included</p>
@@ -1291,7 +1291,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           {showNotes && (
             <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
               <p className="text-xs font-semibold text-[#535B68] mb-3 flex items-center gap-1.5">
-                <FileText size={11} /> Notes
+                <FileText size={11} className="text-[#A07D32]" /> Notes
               </p>
               {booking.operator_note && (
                 <div className={!isDone ? 'mb-4' : ''}>
@@ -1333,7 +1333,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
             <div className="flex items-center justify-between mb-3">
               <p className="text-xs font-semibold text-[#535B68] flex items-center gap-1.5">
-                <Camera size={11} /> Photos
+                <Camera size={11} className="text-[#A07D32]" /> Photos
               </p>
               {!isDone && (
                 <button
@@ -1341,7 +1341,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   disabled={uploadingPhoto}
                   className="flex items-center gap-1.5 text-[#7a5c14] text-xs font-semibold bg-[#d5a538]/10 border border-[#d5a538]/25 px-3 py-1.5 rounded-xl active:opacity-70 disabled:opacity-40"
                 >
-                  {uploadingPhoto ? <Loader2 size={12} className="animate-spin" /> : <Camera size={12} />}
+                  {uploadingPhoto ? <Loader2 size={12} className="animate-spin" /> : <Camera size={12} className="text-[#A07D32]" />}
                   {uploadingPhoto ? 'Uploading…' : 'Add Photo'}
                 </button>
               )}
@@ -1389,7 +1389,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 href={`tel:${business.phone}`}
                 className="py-3 rounded-xl font-semibold text-[#7a5c14] text-sm flex items-center justify-center gap-2 border border-[#d5a538]/25 bg-[#d5a538]/8 active:opacity-70"
               >
-                <Phone size={14} /> Call Dispatch
+                <Phone size={14} className="text-[#A07D32]" /> Call Dispatch
               </a>
             )}
             {!isDone && (

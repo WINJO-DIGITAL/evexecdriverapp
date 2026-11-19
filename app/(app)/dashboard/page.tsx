@@ -131,13 +131,13 @@ export default function DashboardPage() {
             disabled={refreshing}
             className="w-10 h-10 rounded-xl bg-[#EEF0F3] border border-[#E2E5EA] flex items-center justify-center active:opacity-70 disabled:opacity-50"
           >
-            <RefreshCw size={16} className={`text-[#3A414C] ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw size={16} className={`text-[#A07D32] ${refreshing ? 'animate-spin' : ''}`} />
           </button>
           <Link
             href="/notifications"
             className="relative w-10 h-10 rounded-xl bg-[#EEF0F3] border border-[#E2E5EA] flex items-center justify-center"
           >
-            <Bell size={18} className="text-[#3A414C]" />
+            <Bell size={18} className="text-[#A07D32]" />
             {upcomingBookings.length > 0 && (
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#d5a538]" />
             )}
@@ -208,7 +208,7 @@ export default function DashboardPage() {
               <span className="text-xs font-semibold text-[#7a5c14]">
                 Active job
               </span>
-              <ChevronRight size={16} className="text-[#7a5c14]" />
+              <ChevronRight size={16} className="text-[#A07D32]" />
             </div>
             <p className="text-[#060C1A] font-semibold text-sm">{activeBooking.customer_name}</p>
             <p className="text-[#3A414C] text-xs mt-0.5">
@@ -253,7 +253,7 @@ export default function DashboardPage() {
                   <span className="text-[#7a5c14] font-bold text-base">{formatTime(booking.travel_time)}</span>
                   <div className="flex items-center gap-2">
                     <BookingStatusBadge status={booking.status} />
-                    <ChevronRight size={14} className="text-[#535B68]" />
+                    <ChevronRight size={14} className="text-[#A07D32]" />
                   </div>
                 </div>
                 <p className="text-[#060C1A] font-semibold text-[15px] mb-3">{booking.customer_name}</p>

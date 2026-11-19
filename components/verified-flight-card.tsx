@@ -89,14 +89,14 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
       <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
         <div className="flex items-center justify-between mb-1">
           <p className="text-xs font-semibold text-[#535B68] flex items-center gap-1.5">
-            <Plane size={11} /> Flight (verified)
+            <Plane size={11} className="text-[#A07D32]" /> Flight (verified)
           </p>
           <button
             onClick={reVerify}
             disabled={refreshing}
             className="w-8 h-8 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70 disabled:opacity-40 flex-shrink-0"
           >
-            <RefreshCw size={13} className={`text-[#535B68] ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw size={13} className={`text-[#A07D32] ${refreshing ? 'animate-spin' : ''}`} />
           </button>
         </div>
         <p className="text-[#535B68] text-xs">Not yet verified. Tap refresh to check.</p>
@@ -112,14 +112,14 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
     <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
       <div className="flex items-center justify-between mb-3">
         <p className="text-xs font-semibold text-[#535B68] flex items-center gap-1.5">
-          <Plane size={11} /> Flight (verified)
+          <Plane size={11} className="text-[#A07D32]" /> Flight (verified)
         </p>
         <button
           onClick={reVerify}
           disabled={refreshing}
           className="w-8 h-8 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70 disabled:opacity-40 flex-shrink-0"
         >
-          <RefreshCw size={13} className={`text-[#535B68] ${refreshing ? 'animate-spin' : ''}`} />
+          <RefreshCw size={13} className={`text-[#A07D32] ${refreshing ? 'animate-spin' : ''}`} />
         </button>
       </div>
       <div className="flex items-center justify-between mb-3">
