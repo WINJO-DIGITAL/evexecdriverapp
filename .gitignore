@@ -33,3 +33,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Environment files: never commit real keys. Only the blank template is tracked.
+.env*
+!.env.example
