@@ -86,20 +86,17 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
   if (loading) return null
   if (!verification) {
     return (
-      <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
-        <div className="flex items-center justify-between mb-1">
-          <p className="text-xs font-semibold text-[#535B68] flex items-center gap-1.5">
-            <Plane size={11} className="text-[#A07D32]" /> Flight (verified)
-          </p>
-          <button
-            onClick={reVerify}
-            disabled={refreshing}
-            className="w-8 h-8 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70 disabled:opacity-40 flex-shrink-0"
-          >
-            <RefreshCw size={13} className={`text-[#A07D32] ${refreshing ? 'animate-spin' : ''}`} />
-          </button>
-        </div>
-        <p className="text-[#535B68] text-xs">Not yet verified. Tap refresh to check.</p>
+      <div className="bg-white border border-[#E2E5EA] rounded-2xl pl-4 pr-3 py-2.5 flex items-center gap-2">
+        <Plane size={13} className="text-[#A07D32] flex-shrink-0" />
+        <p className="flex-1 text-[#535B68] text-xs">Flight not yet verified</p>
+        <button
+          onClick={reVerify}
+          disabled={refreshing}
+          aria-label="Check the flight"
+          className="w-8 h-8 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70 disabled:opacity-40 flex-shrink-0"
+        >
+          <RefreshCw size={13} className={`text-[#A07D32] ${refreshing ? 'animate-spin' : ''}`} />
+        </button>
       </div>
     )
   }

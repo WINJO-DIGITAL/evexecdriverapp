@@ -1301,7 +1301,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               )}
               {!isDone && (
                 <div>
-                  <p className="text-xs text-[#535B68] mb-1.5">Your notes</p>
+                  {booking.operator_note && <p className="text-xs text-[#535B68] mb-1.5">Your notes</p>}
                   <textarea
                     value={driverNote}
                     onChange={(e) => setDriverNote(e.target.value)}
@@ -1330,8 +1330,9 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           )}
 
           {/* ── Photos / damage report ───────────────────────────────────── */}
+          {!(isDone && photos.length === 0) && (
           <div className="bg-white border border-[#E2E5EA] rounded-2xl p-4">
-            <div className="flex items-center justify-between mb-3">
+            <div className={`flex items-center justify-between ${photos.length > 0 ? 'mb-3' : ''}`}>
               <p className="text-xs font-semibold text-[#535B68] flex items-center gap-1.5">
                 <Camera size={11} className="text-[#A07D32]" /> Photos
               </p>
@@ -1358,11 +1359,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 e.target.value = ''
               }}
             />
-            {photos.length === 0 ? (
-              <p className="text-[#646C78] text-xs text-center py-4">
-                {isDone ? 'No photos recorded' : 'Tap Add Photo to capture damage or evidence'}
-              </p>
-            ) : (
+            {photos.length > 0 && (
               <div className="grid grid-cols-3 gap-2">
                 {photos.map(photo => (
                   <div key={photo.id} className="relative aspect-square rounded-xl overflow-hidden bg-[#EEF0F3]">
@@ -1381,6 +1378,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               </div>
             )}
           </div>
+          )}
 
           {/* ── Dispatch + SOS ───────────────────────────────────────────── */}
           <div className={`grid gap-3 ${!isDone && business.phone ? 'grid-cols-2' : 'grid-cols-1'}`}>
