@@ -98,7 +98,7 @@ export default function ResetPasswordPage() {
           <div className="text-center py-2">
             <CheckCircle2 size={32} className="mx-auto mb-3 text-green-800" />
             <h2 className="text-lg font-semibold text-[#060C1A] mb-2">Password Updated</h2>
-            <p className="text-[#3A414C] text-sm">Taking you to your dashboard…</p>
+            <p className="text-[#3A414C] text-sm">Taking You To Your Dashboard…</p>
           </div>
         ) : (
           <>

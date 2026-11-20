@@ -95,7 +95,7 @@ export default function DashboardPage() {
       attestation_status: 'confirmed',
     }).eq('id', bookingId).select('id')
     if (error || !data?.length) {
-      addToast({ title: 'Not confirmed', message: 'Could not confirm the pickup. Check your connection and try again.' })
+      addToast({ title: 'Not Confirmed', message: 'Could not confirm the pickup. Check your connection and try again.' })
     } else {
       setAttestationBookings(prev => prev.filter(b => b.id !== bookingId))
     }

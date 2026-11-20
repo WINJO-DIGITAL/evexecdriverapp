@@ -251,7 +251,7 @@ function PaymentModal({
       <div className="bg-white rounded-t-3xl px-5 pt-5 pb-10">
         <div className="w-10 h-1 rounded-full bg-[#E2E5EA] mx-auto mb-5" />
         <h2 className="text-[#060C1A] font-bold text-lg mb-1">How Was Payment Made?</h2>
-        <p className="text-[#535B68] text-xs mb-5">Confirm before completing the journey</p>
+        <p className="text-[#535B68] text-xs mb-5">Confirm Before Completing The Journey</p>
 
         <div className="grid grid-cols-3 gap-3 mb-5">
           {(['Card', 'Cash', 'Bank Transfer'] as const).map((m) => {
@@ -273,7 +273,7 @@ function PaymentModal({
                 {m === 'Cash' && <Banknote size={20} />}
                 {m === 'Bank Transfer' && <ArrowLeftRight size={20} />}
                 <span className="text-xs font-bold">{m === 'Bank Transfer' ? 'Transfer' : m}</span>
-                {m === 'Card' && <span className="text-[10px] font-normal opacity-60">Paid to office</span>}
+                {m === 'Card' && <span className="text-[10px] font-normal opacity-60">Paid To Office</span>}
               </button>
             )
           })}
@@ -543,7 +543,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           }
         },
         (err) => {
-          addToast({ title: 'Location off', message: 'Enable location so the customer can track you.' })
+          addToast({ title: 'Location Off', message: 'Enable location so the customer can track you.' })
           console.warn('[GPS]', err.message)
           resolve()
         },
@@ -591,7 +591,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
     }, { onConflict: 'booking_id,reminder_type' })
     if (error) {
       console.error(`[${type} reminder]`, error.message)
-      addToast({ title: 'Reminder not saved', message: 'Messages opened, but it could not be marked as sent. Check your signal.' })
+      addToast({ title: 'Reminder Not Saved', message: 'Messages opened, but it could not be marked as sent. Check your signal.' })
     }
   }
 
@@ -715,14 +715,14 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
     const path = `${user.id}/${booking.id}/${crypto.randomUUID()}.${ext}`
     const { error: upErr } = await supabase.storage.from('job-photos').upload(path, file, { upsert: false })
     if (upErr) {
-      addToast({ title: 'Upload failed', message: upErr.message })
+      addToast({ title: 'Upload Failed', message: upErr.message })
     } else {
       // Store the storage path (not a public URL) — bucket is private.
       const { data: row, error: rowErr } = await supabase.from('booking_photos')
         .insert({ booking_id: booking.id, driver_id: user.id, url: path })
         .select('id, url, caption, created_at').single()
       if (rowErr) {
-        addToast({ title: 'Photo saved but record failed', message: rowErr.message })
+        addToast({ title: 'Photo Saved but Record Failed', message: rowErr.message })
       } else if (row) {
         // Generate a signed URL for immediate display
         const { data: signed } = await supabase.storage.from('job-photos').createSignedUrl(path, 3600)
@@ -743,13 +743,13 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
     if (path) {
       const { error: storageErr } = await supabase.storage.from('job-photos').remove([path])
       if (storageErr) {
-        addToast({ title: 'Delete failed', message: storageErr.message })
+        addToast({ title: 'Delete Failed', message: storageErr.message })
         return
       }
     }
     const { error: dbErr } = await supabase.from('booking_photos').delete().eq('id', photoId)
     if (dbErr) {
-      addToast({ title: 'Delete failed', message: dbErr.message })
+      addToast({ title: 'Delete Failed', message: dbErr.message })
       return
     }
     setPhotos(prev => prev.filter(p => p.id !== photoId))
@@ -761,7 +761,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
     const { error } = await supabase.from('bookings').update({ driver_notes: driverNote }).eq('id', booking.id)
     setSavingNote(false)
     if (error) {
-      addToast({ title: 'Note not saved', message: error.message })
+      addToast({ title: 'Note Not Saved', message: error.message })
     } else {
       setNoteSaved(true)
       setTimeout(() => setNoteSaved(false), 2500)
@@ -779,7 +779,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
   if (!booking) {
     return (
       <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center">
-        <p className="text-[#535B68]">Booking not found</p>
+        <p className="text-[#535B68]">Booking Not Found</p>
       </div>
     )
   }
@@ -943,7 +943,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               {/* 5-second undo after POB */}
               {pobUndoActive && (
                 <div className="flex items-center justify-between bg-[#d5a538]/10 border border-[#d5a538]/25 rounded-xl px-4 py-3">
-                  <span className="text-[#3A414C] text-sm">Passenger On Board set</span>
+                  <span className="text-[#3A414C] text-sm">Passenger On Board Set</span>
                   <button
                     onClick={handleUndoPob}
                     className="text-[#7a5c14] text-sm font-bold flex items-center gap-2"
@@ -977,7 +977,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                   ) : (
                     <div className="w-full h-16 rounded-2xl bg-[#F7F8FA] border border-[#E2E5EA] flex items-center justify-center gap-2">
                       <Clock size={14} className="text-[#A07D32]" />
-                      <span className="text-[#535B68] text-sm font-semibold">Available 24 h before pickup</span>
+                      <span className="text-[#535B68] text-sm font-semibold">Available 24 h Before Pickup</span>
                     </div>
                   )}
                 </>
@@ -995,7 +995,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                     </div>
                     <a
                       href={pendingSms.href}
-                      aria-label="Open the text again"
+                      aria-label="Open The Text Again"
                       className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                     >
                       <RefreshCw size={16} className="text-[#A07D32]" />
@@ -1039,7 +1039,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                         {booking.customer_phone && (
                           <button
                             onClick={() => sendCustomerReminder(r.type, true)}
-                            aria-label="Open the reminder again"
+                            aria-label="Open The Reminder Again"
                             className="w-11 h-11 rounded-xl flex items-center justify-center border border-[#E2E5EA] bg-[#EEF0F3] active:opacity-70"
                           >
                             <RefreshCw size={16} className="text-[#A07D32]" />
@@ -1231,7 +1231,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                         )
                       }
                       className="flex items-center gap-1 text-green-800 text-[10px] font-semibold bg-green-100 border border-green-200 px-2 py-2 rounded-xl active:opacity-70"
-                      title="Find EV charger near dropoff"
+                      title="Find EV Charger Near Dropoff"
                     >
                       <Car size={10} />
                       <Zap size={10} />
@@ -1281,8 +1281,8 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 <ArrowLeftRight size={15} className="text-[#A07D32]" />
               </div>
               <div>
-                <p className="text-[#262C35] text-xs font-semibold">Return journey included</p>
-                <p className="text-[#535B68] text-[10px] mt-0.5">Round-trip booking</p>
+                <p className="text-[#262C35] text-xs font-semibold">Return Journey Included</p>
+                <p className="text-[#535B68] text-[10px] mt-0.5">Round-Trip Booking</p>
               </div>
             </div>
           )}
@@ -1295,13 +1295,13 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               </p>
               {booking.operator_note && (
                 <div className={!isDone ? 'mb-4' : ''}>
-                  <p className="text-xs text-[#535B68] mb-1">From operator</p>
+                  <p className="text-xs text-[#535B68] mb-1">From Operator</p>
                   <p className="text-[#262C35] text-sm leading-relaxed">{booking.operator_note}</p>
                 </div>
               )}
               {!isDone && (
                 <div>
-                  {booking.operator_note && <p className="text-xs text-[#535B68] mb-1.5">Your notes</p>}
+                  {booking.operator_note && <p className="text-xs text-[#535B68] mb-1.5">Your Notes</p>}
                   <textarea
                     value={driverNote}
                     onChange={(e) => setDriverNote(e.target.value)}
@@ -1322,7 +1322,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
               )}
               {isDone && booking.driver_notes && (
                 <div>
-                  <p className="text-xs text-[#535B68] mb-1">Your notes</p>
+                  <p className="text-xs text-[#535B68] mb-1">Your Notes</p>
                   <p className="text-[#3A414C] text-sm leading-relaxed">{booking.driver_notes}</p>
                 </div>
               )}

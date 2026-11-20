@@ -160,7 +160,7 @@ function EarningsContent() {
     <div className="min-h-screen bg-[#F4F5F7] px-4 pt-12 pb-4">
       <div className="mb-6">
         <h1 className="text-[#060C1A] font-bold text-xl">Earnings</h1>
-        <p className="text-[#535B68] text-xs mt-1">Your payment summary</p>
+        <p className="text-[#535B68] text-xs mt-1">Your Payment Summary</p>
       </div>
 
       {/* View Switcher */}
@@ -229,7 +229,7 @@ function EarningsContent() {
             <div className="bg-white border border-[#E2E5EA] rounded-xl p-3 text-center">
               <TrendingUp size={16} className="mx-auto mb-1 text-[#A07D32]" />
               <p className="text-[#060C1A] font-bold text-lg">£{perJob.toFixed(0)}</p>
-              <p className="text-[#535B68] text-xs">Per Job avg</p>
+              <p className="text-[#535B68] text-xs">Per Job Avg</p>
             </div>
           </div>
 
@@ -356,7 +356,7 @@ function EarningsContent() {
             <div className="bg-white border border-[#E2E5EA] rounded-2xl p-3 text-center">
               <p className="text-[#535B68] text-[11px]">Earned</p>
               <p className="text-[#7a5c14] font-bold text-xl mt-0.5">£{monthEarnings.toFixed(0)}</p>
-              <p className="text-[#646C78] text-[9px] mt-0.5">this month</p>
+              <p className="text-[#646C78] text-[9px] mt-0.5">This Month</p>
             </div>
             <div className="bg-white border border-[#E2E5EA] rounded-2xl p-3 text-center">
               <p className="text-[#535B68] text-[11px]">All Time</p>

@@ -163,11 +163,11 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
           {/* Journey details */}
           <div className="space-y-3 mb-5">
             <Row label="Date" value={formatDate(booking.travel_date)} />
-            <Row label="Pickup time" value={formatTime(booking.travel_time)} />
+            <Row label="Pickup Time" value={formatTime(booking.travel_time)} />
             <Row label="Passenger" value={booking.customer_name} />
             {booking.passengers > 1 && <Row label="Passengers" value={String(booking.passengers)} />}
             {booking.journey_type && (
-              <Row label="Journey type" value={booking.journey_type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} />
+              <Row label="Journey Type" value={booking.journey_type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} />
             )}
             {booking.flight_number && <Row label="Flight" value={booking.flight_number} />}
           </div>
@@ -187,7 +187,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
               </div>
             )}
             {!booking.pickup_location && !dropoff && (
-              <p className="text-[#535B68] text-xs">Route not recorded</p>
+              <p className="text-[#535B68] text-xs">Route Not Recorded</p>
             )}
           </div>
 
@@ -198,7 +198,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ id: string }
           <div className="mt-4 pt-4 border-t border-[#E2E5EA] print-divider space-y-2">
             {booking.quoted_price != null && (
               <Row
-                label="Journey fare"
+                label="Journey Fare"
                 value={booking.quoted_price > 0 ? `£${booking.quoted_price.toFixed(2)}` : 'No payment to collect'}
               />
             )}

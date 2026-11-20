@@ -56,7 +56,7 @@ export function PushSettings() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BellRing size={14} className="text-[#A07D32]" />
-          <p className="text-[#3A414C] text-xs font-semibold">Job notifications</p>
+          <p className="text-[#3A414C] text-xs font-semibold">Job Notifications</p>
         </div>
         <span className={`text-xs font-bold ${state === 'on' ? 'text-green-600' : 'text-[#b45309]'}`}>{LABEL[state]}</span>
       </div>

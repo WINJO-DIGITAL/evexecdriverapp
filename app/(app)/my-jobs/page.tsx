@@ -60,7 +60,7 @@ export default function MyJobsPage() {
     <div className="min-h-screen bg-[#F4F5F7] px-4 pt-12 pb-4">
       <div className="mb-6">
         <h1 className="text-[#060C1A] font-bold text-xl">Active</h1>
-        <p className="text-[#535B68] text-xs mt-1">Jobs currently in progress</p>
+        <p className="text-[#535B68] text-xs mt-1">Jobs Currently in Progress</p>
       </div>
 
       {loading ? (
@@ -70,7 +70,7 @@ export default function MyJobsPage() {
       ) : bookings.length === 0 ? (
         <div className="bg-white border border-[#E2E5EA] rounded-2xl p-12 text-center">
           <Car size={32} className="mx-auto mb-3 text-[#A07D32]" />
-          <p className="text-[#535B68] text-sm">No active jobs right now</p>
+          <p className="text-[#535B68] text-sm">No Active Jobs Right Now</p>
           <p className="text-[#646C78] text-xs mt-1">Jobs appear here once you start them</p>
         </div>
       ) : (

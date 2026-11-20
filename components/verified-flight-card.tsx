@@ -75,7 +75,7 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
       setVerification(data.verification as FlightVerification)
     } catch (err) {
       addToast({
-        title: 'Flight check failed',
+        title: 'Flight Check Failed',
         message: err instanceof Error ? err.message : 'Could not re-check the flight',
       })
     } finally {
@@ -88,11 +88,11 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
     return (
       <div className="bg-white border border-[#E2E5EA] rounded-2xl pl-4 pr-3 py-2.5 flex items-center gap-2">
         <Plane size={13} className="text-[#A07D32] flex-shrink-0" />
-        <p className="flex-1 text-[#535B68] text-xs">Flight not yet verified</p>
+        <p className="flex-1 text-[#535B68] text-xs">Flight Not Yet Verified</p>
         <button
           onClick={reVerify}
           disabled={refreshing}
-          aria-label="Check the flight"
+          aria-label="Check The Flight"
           className="w-8 h-8 rounded-xl bg-[#EEF0F3] flex items-center justify-center active:opacity-70 disabled:opacity-40 flex-shrink-0"
         >
           <RefreshCw size={13} className={`text-[#A07D32] ${refreshing ? 'animate-spin' : ''}`} />
@@ -136,7 +136,7 @@ export function VerifiedFlightCard({ bookingId }: { bookingId: string }) {
         </div>
         {verification.recommended_pickup && (
           <div>
-            <p className="text-[#535B68] text-xs mb-0.5">Estimated arrival</p>
+            <p className="text-[#535B68] text-xs mb-0.5">Estimated Arrival</p>
             <p className="text-[#060C1A] text-sm font-medium">{formatFlightDateTime(verification.recommended_pickup)}</p>
           </div>
         )}
